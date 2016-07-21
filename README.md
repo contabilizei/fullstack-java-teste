@@ -24,7 +24,7 @@ Que tal fazer parte de um time com atitude “get Fˆ%#ing things done”? Parti
 * Material Design
 * BDD
 
-Mais informações sobre a vaga você encontra aqui: [Desenvolvedor Front-end na Contabilizei](https://jobs.lever.co/contabilizei/9dee5e3a-34bd-4b8e-9fc6-0b38db170788)
+Mais informações sobre a vaga você encontra aqui: [Desenvolvedor Full Stack Java na Contabilizei](https://jobs.lever.co/contabilizei/826c32bd-d800-475a-9f05-531e86dc4ea3)
 
 # O que preciso fazer?
 
