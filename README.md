@@ -38,23 +38,38 @@ Vamos ser práticos e diretos, se você quer trabalhar conosco siga os passos ab
 
 # O desafio (CRUD de pedidos)
 
-Crie uma aplicação JavaEE utilizando padrão RESTful JAX-RS. Esta aplicação deverá permitir a inclusão, alteração, exclusão de pedidos de venda.
+Crie uma aplicação JavaEE baseada em Web Services no padrão RESTful JAX-RS. 
 
-O pedido deverá conter: id, data de emissão, cliente, produtos e valor total
+A aplicação deverá permitir a inclusão, alteração, exclusão e listagem de pedidos de venda.
 
-O produto deverá conter: id, descrição, quantidade, valor unitário
+Pedidos deverão conter: 
+* número
+* data de emissão
+* cliente
+* lista de produtos
+* valor total
+ 
+Produto deverão conter: 
+* código
+* descrição
+* quantidade
+* valor unitário
 
-O cliente deverá conter: nome ou razão social, cpf ou cnpj, telefone e e-mail
+Cliente deverão conter: 
+* cpf ou cnpj
+* nome ou razão social
+* telefone
+* e-mail
 
 ### Tecnologias
 
-Escolha umas das opções abaixa para implementar a solução:
+Escolha umas das opções abaixo para implementar sua solução:
 
 #### Back-end
 
 **Opção 1**
 
-* Aplicação baseada no framework [**Google App Engine para Java**](https://cloud.google.com/appengine/)
+* Aplicação baseada JavaEE no framework [**Google App Engine para Java**](https://cloud.google.com/appengine/)
 * Banco de dados NOSQL [Datastore](https://cloud.google.com/datastore/)
 * RESTFul API com [Google Endpoints](https://cloud.google.com/appengine/docs/java/endpoints/) ou Jersey JAX-RS
 
