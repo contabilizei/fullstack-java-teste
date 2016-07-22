@@ -38,13 +38,13 @@ Vamos ser práticos e diretos, se você quer trabalhar conosco siga os passos ab
 
 # O desafio (CRUD de pedidos)
 
-Crie 2 aplicações: 
+Você deverá criar 2 aplicações para cadastramento de pedidos de venda: 
 
-Back-end: aplicação JavaEE baseada em Web Services no padrão RESTful JAX-RS.
+**Back-end:** aplicação JavaEE baseada em Web Services no padrão RESTful JAX-RS.
 
-Front-end: Single Page Application que se comunique com estes serviços. 
+**Front-end:** Single Page Application que se comunique com estes serviços. 
 
-A aplicação Back-end dever ter, ao menos, serviços para: inclusão, alteração, exclusão e listagem de pedidos de venda.
+A aplicação Back-end dever ter, ao menos, serviços para: inclusão, alteração, exclusão e listagem dos pedidos.
 
 Pedidos deverão conter: 
 * número
@@ -67,7 +67,7 @@ No pedido, deve constar as seguintes informações do cliente:
 
 ### Tecnologias
 
-Escolha umas das opções abaixo para implementar sua solução. A modelagem dos dados fica a seu critério.
+Escolha umas das opções abaixo para implementar sua solução. A modelagem dos dados fica a seu critério. Não se preocupe com autenticação ou multitenancy.
 
 #### Back-end
 
