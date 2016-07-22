@@ -38,9 +38,13 @@ Vamos ser práticos e diretos, se você quer trabalhar conosco siga os passos ab
 
 # O desafio (CRUD de pedidos)
 
-Crie uma aplicação JavaEE baseada em Web Services no padrão RESTful JAX-RS. 
+Crie 2 aplicações: 
 
-A aplicação deverá permitir a inclusão, alteração, exclusão e listagem de pedidos de venda.
+Back-end: aplicação JavaEE baseada em Web Services no padrão RESTful JAX-RS.
+
+Front-end: Single Page Application que se comunique com estes serviços. 
+
+A aplicação Back-end dever ter, ao menos, serviços para: inclusão, alteração, exclusão e listagem de pedidos de venda.
 
 Pedidos deverão conter: 
 * número
@@ -49,13 +53,13 @@ Pedidos deverão conter:
 * lista de produtos
 * valor total
  
-Produto deverão conter: 
+Cada produto do pedido deve ter: 
 * código
 * descrição
 * quantidade
 * valor unitário
 
-Cliente deverão conter: 
+No pedido, deve constar as seguintes informações do cliente: 
 * cpf ou cnpj
 * nome ou razão social
 * telefone
@@ -63,41 +67,40 @@ Cliente deverão conter:
 
 ### Tecnologias
 
-Escolha umas das opções abaixo para implementar sua solução:
+Escolha umas das opções abaixo para implementar sua solução. A modelagem dos dados fica a seu critério.
 
 #### Back-end
 
 **Opção 1**
 
-* Aplicação baseada JavaEE no framework [**Google App Engine para Java**](https://cloud.google.com/appengine/)
+* Aplicação JavaEE utilizando framework [**Google App Engine para Java**](https://cloud.google.com/appengine/)
 * Banco de dados NOSQL [Datastore](https://cloud.google.com/datastore/)
 * RESTFul API com [Google Endpoints](https://cloud.google.com/appengine/docs/java/endpoints/) ou Jersey JAX-RS
 
 **Opção 2**
 
-* Aplicação padrão JavaEE 
+* Aplicação pura JavaEE 
 * RESTful API JAX-RS utilizando Servlets ou framework Jersey
 * Banco de dados SQL (MySQL, PostgreSQL, HSQLDB) ou NOSQL(MongoDB, Cassandra)
 
-
 #### Front-end
 
-* Single Page Application baseado em HTML5 e CSS3 
-* Javascript puro / JQuery
+* Single Page Application utilizando apenas HTML5 e CSS3 
+* Javascript puro / JQuery (e plugins)
 * Bootstrap (http://getbootstrap.com/)
-* AngularJS 1.x e Angular Material Design (serão diferenciais)
+* AngularJS 1.x e Angular Material Design (estes são opcionais e são diferenciais)
 
 **Atenção:** não utilize frameworks ou tecnologias não mencionados acima.
 
 ### Arquitetura e documentação
 
-No arquivo README do projeto explique o funcionamento e a arquitetura da solução adotada na sua implementação do desafio. Descreva também os passos para executar corretamente seu projeto.
+No arquivo README do projeto explique o funcionamento e a arquitetura da solução adotada na sua implementação. Descreva também os passos para executar corretamente seu projeto.
 
 ### Avaliação
 
-Entre os critérios de avaliação estão (sem ordem de peso):
+Entre os critérios de avaliação estão:
 
-* Facilidade de configuração
+* Facilidade de configuração do projeto
 * Performance
 * Código limpo e organização
 * Documentação de código
@@ -108,5 +111,5 @@ Entre os critérios de avaliação estão (sem ordem de peso):
 
 # Sobre você
 
-Queremos saber um pouco mais sobre você :) Por favor, responda o questionário do arquivo [questions.md](questions.md) e envie junto com seu projeto.
+Queremos saber um pouco mais sobre você também :) Por favor, responda o questionário do arquivo [questions.md](questions.md) e envie junto com seu projeto.
 
