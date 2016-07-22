@@ -59,7 +59,7 @@
 <li>BDD</li>
 </ul>
 
-<p>Mais informações sobre a vaga você encontra aqui: <a href="https://jobs.lever.co/contabilizei/9dee5e3a-34bd-4b8e-9fc6-0b38db170788">Desenvolvedor Front-end na Contabilizei</a></p>
+<p>Mais informações sobre a vaga você encontra aqui: <a href="https://jobs.lever.co/contabilizei/826c32bd-d800-475a-9f05-531e86dc4ea3">Desenvolvedor Full Stack Java na Contabilizei</a></p>
 
 <h1>
 <a id="o-que-preciso-fazer" class="anchor" href="#o-que-preciso-fazer" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>O que preciso fazer?</h1>
@@ -77,18 +77,46 @@
 <h1>
 <a id="o-desafio-crud-de-pedidos" class="anchor" href="#o-desafio-crud-de-pedidos" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>O desafio (CRUD de pedidos)</h1>
 
-<p>Crie uma aplicação JavaEE utilizando padrão RESTful JAX-RS. Esta aplicação deverá permitir a inclusão, alteração, exclusão de pedidos de venda.</p>
+<p>Você deverá criar 2 aplicações para cadastramento de pedidos de venda: </p>
 
-<p>O pedido deverá conter: id, data de emissão, cliente, produtos e valor total</p>
+<p><strong>Back-end:</strong> aplicação JavaEE baseada em Web Services no padrão RESTful JAX-RS.</p>
 
-<p>O produto deverá conter: id, descrição, quantidade, valor unitário</p>
+<p><strong>Front-end:</strong> Single Page Application que se comunique com estes serviços. </p>
 
-<p>O cliente deverá conter: nome ou razão social, cpf ou cnpj, telefone e e-mail</p>
+<p>A aplicação Back-end dever ter, ao menos, serviços para: inclusão, alteração, exclusão e listagem dos pedidos.</p>
+
+<p>Pedidos deverão conter: </p>
+
+<ul>
+<li>número</li>
+<li>data de emissão</li>
+<li>cliente</li>
+<li>lista de produtos</li>
+<li>valor total</li>
+</ul>
+
+<p>Cada produto do pedido deve ter: </p>
+
+<ul>
+<li>código</li>
+<li>descrição</li>
+<li>quantidade</li>
+<li>valor unitário</li>
+</ul>
+
+<p>No pedido, deve constar as seguintes informações do cliente: </p>
+
+<ul>
+<li>cpf ou cnpj</li>
+<li>nome ou razão social</li>
+<li>telefone</li>
+<li>e-mail</li>
+</ul>
 
 <h3>
 <a id="tecnologias" class="anchor" href="#tecnologias" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Tecnologias</h3>
 
-<p>Escolha umas das opções abaixa para implementar a solução:</p>
+<p>Escolha umas das opções abaixo para implementar sua solução. A modelagem dos dados fica a seu critério. Não se preocupe com autenticação ou multitenancy.</p>
 
 <h4>
 <a id="back-end" class="anchor" href="#back-end" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Back-end</h4>
@@ -96,7 +124,7 @@
 <p><strong>Opção 1</strong></p>
 
 <ul>
-<li>Aplicação baseada no framework <a href="https://cloud.google.com/appengine/"><strong>Google App Engine para Java</strong></a>
+<li>Aplicação JavaEE utilizando framework <a href="https://cloud.google.com/appengine/"><strong>Google App Engine para Java</strong></a>
 </li>
 <li>Banco de dados NOSQL <a href="https://cloud.google.com/datastore/">Datastore</a>
 </li>
@@ -106,7 +134,7 @@
 <p><strong>Opção 2</strong></p>
 
 <ul>
-<li>Aplicação padrão JavaEE </li>
+<li>Aplicação pura JavaEE </li>
 <li>RESTful API JAX-RS utilizando Servlets ou framework Jersey</li>
 <li>Banco de dados SQL (MySQL, PostgreSQL, HSQLDB) ou NOSQL(MongoDB, Cassandra)</li>
 </ul>
@@ -115,10 +143,10 @@
 <a id="front-end" class="anchor" href="#front-end" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Front-end</h4>
 
 <ul>
-<li>Single Page Application baseado em HTML5 e CSS3 </li>
-<li>Javascript puro / JQuery</li>
+<li>Single Page Application utilizando apenas HTML5 e CSS3 </li>
+<li>Javascript puro / JQuery (e plugins)</li>
 <li>Bootstrap (<a href="http://getbootstrap.com/">http://getbootstrap.com/</a>)</li>
-<li>AngularJS 1.x e Angular Material Design (serão diferenciais)</li>
+<li>AngularJS 1.x e Angular Material Design (estes são opcionais e são diferenciais)</li>
 </ul>
 
 <p><strong>Atenção:</strong> não utilize frameworks ou tecnologias não mencionados acima.</p>
@@ -126,15 +154,15 @@
 <h3>
 <a id="arquitetura-e-documentação" class="anchor" href="#arquitetura-e-documenta%C3%A7%C3%A3o" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Arquitetura e documentação</h3>
 
-<p>No arquivo README do projeto explique o funcionamento e a arquitetura da solução adotada na sua implementação do desafio. Descreva também os passos para executar corretamente seu projeto.</p>
+<p>No arquivo README do projeto explique o funcionamento e a arquitetura da solução adotada na sua implementação. Descreva também os passos para executar corretamente seu projeto.</p>
 
 <h3>
 <a id="avaliação" class="anchor" href="#avalia%C3%A7%C3%A3o" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Avaliação</h3>
 
-<p>Entre os critérios de avaliação estão (sem ordem de peso):</p>
+<p>Entre os critérios de avaliação estão:</p>
 
 <ul>
-<li>Facilidade de configuração</li>
+<li>Facilidade de configuração do projeto</li>
 <li>Performance</li>
 <li>Código limpo e organização</li>
 <li>Documentação de código</li>
@@ -147,7 +175,7 @@
 <h1>
 <a id="sobre-você" class="anchor" href="#sobre-voc%C3%AA" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Sobre você</h1>
 
-<p>Queremos saber um pouco mais sobre você :) Por favor, responda o questionário do arquivo <a href="questions.md">questions.md</a> e envie junto com seu projeto.</p>
+<p>Queremos saber um pouco mais sobre você também :) Por favor, responda o questionário do arquivo <a href="questions.md">questions.md</a> e envie junto com seu projeto.</p>
       </section>
     </div>
 
