@@ -2,10 +2,9 @@
 
 **Eleita a melhor startup B2B da América Latina em 2016, a Contabilizei** é um escritório de contabilidade online, líder de mercado, com sede em Curitiba (PR). Nosso propósito é resolver a dor e burocracia de micro e pequenas empresas ao se manterem regulares com o governo. Somos contadores, só que online, simples assim. Acreditamos no poder da tecnologia para melhorar continuamente a vida das pessoas. 
 
-
 Se você tem espírito e comportamento empreendedor, muita disposição e proatividade para trabalhar em uma empresa em franca expansão, você é um forte candidato :)
 
-Como Desenvolvedor Full-stack você irá trabalhar juntamente com uma excelente equipe de desenvolvedores ninja, tendo foco na criação produtos que garantam a melhor experiência para nossos usuários.
+Como Desenvolvedor Full-stack você irá atuar no desenvolvimento de soluções em arquitetura Java Web MVC com RestFul APis (JAX-RS), integrações com outros sistemas (SOAP, XML, JSON), banco de dados NoSQL e soluções escaláveis, participando de todo o processo de desenvolvimento, desde tomadas de decisões à codificação e testes.
 
 ### O que fazem os Ninjas da Contabilizei? O que comem (e bebem)? Onde vivem?
 
