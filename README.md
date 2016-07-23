@@ -5,7 +5,7 @@
 
 Se você tem espírito e comportamento empreendedor, muita disposição e proatividade para trabalhar em uma empresa em franca expansão, você é um forte candidato :)
 
-Como Desenvolvedor Front-end você irá trabalhar juntamente com uma excelente equipe de desenvolvedores ninja, tendo foco na criação produtos que garantam a melhor experiência para nossos usuários.
+Como Desenvolvedor Full-stack você irá trabalhar juntamente com uma excelente equipe de desenvolvedores ninja, tendo foco na criação produtos que garantam a melhor experiência para nossos usuários.
 
 ### O que fazem os Ninjas da Contabilizei? O que comem (e bebem)? Onde vivem?
 
