@@ -30,6 +30,13 @@
 			<artifactId>jersey-server</artifactId>
 			<version>1.8</version>
 		</dependency>
+		
+		<dependency>
+        	<groupId>org.mongodb</groupId>
+    		<artifactId>mongo-java-driver</artifactId>
+        	<version>3.3.0</version>
+    	</dependency>
+		
 
 	</dependencies>
 
