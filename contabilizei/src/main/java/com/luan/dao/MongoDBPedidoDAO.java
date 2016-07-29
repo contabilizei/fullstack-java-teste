@@ -56,46 +56,52 @@ public class MongoDBPedidoDAO {
 		Pedido pedido = new Pedido();
 		
 		Cursor cursor = colecao.find(query);
-		try {
-		    while (cursor.hasNext()) {
-		    	BasicDBObject obj = (BasicDBObject) cursor.next();
-		    	
-		    	pedido.setNumero( obj.getInt("numero"));
-		    	pedido.setValorTotal( obj.getInt("valor_total"));
-		        
-		    	Date dataDeEmissao = obj.getDate("data_emissao");
-		    	
-		    	pedido.setDataDeEmissao(dataDeEmissao);
-		    	BasicDBObject c = (BasicDBObject) obj.get("cliente");
-		    	Cliente cliente = new Cliente();
-		    	cliente.setCpf(c.getInt("cpf"));
-		    	cliente.setNome(c.getString("nome"));
-		    	cliente.setEmail(c.getString("email"));
-		    	cliente.setTelefone(c.getInt("telefone"));
-		    	pedido.setCliente(cliente);
-		    	
-		    	BasicDBList produtosObj = (BasicDBList) obj.get("produtos");
-		    	BasicDBObject[] ps = produtosObj.toArray(new BasicDBObject[0]);
-		    	List<Produto> produtos = new ArrayList<Produto>();
-		    	for (BasicDBObject produtoObj : ps){
-		    		Produto produto = new Produto();
-		    		produto.setCodigo(produtoObj.getString("codigo"));
-		    		produto.setDescricao(produtoObj.getString("descricao"));
-		    		produto.setQuantidade(produtoObj.getInt("quantidade"));
-		    		produto.setValorUnitario(produtoObj.getInt("valor_unitario"));
-		    		
-		    		produtos.add(produto);
-		      	}
-		    	
-		    	pedido.setProdutos(produtos);
-		    	
-		    	
-		    }
-		} finally {
-		    cursor.close();
-		}
+		
+		pedido = getPedido((BasicDBObject) cursor.next());
+		cursor.close();
 		
 		return pedido;
+	}
+
+	private Pedido getPedido(BasicDBObject obj) {
+		Pedido pedido = new Pedido();
+		
+		pedido.setNumero( obj.getInt("numero"));
+		pedido.setValorTotal( obj.getInt("valor_total"));
+		
+		Date dataDeEmissao = obj.getDate("data_emissao");
+		
+		pedido.setDataDeEmissao(dataDeEmissao);
+		BasicDBObject c = (BasicDBObject) obj.get("cliente");
+		Cliente cliente = new Cliente();
+		cliente.setCpf(c.getInt("cpf"));
+		cliente.setNome(c.getString("nome"));
+		cliente.setEmail(c.getString("email"));
+		cliente.setTelefone(c.getInt("telefone"));
+		pedido.setCliente(cliente);
+		
+		BasicDBList produtosObj = (BasicDBList) obj.get("produtos");
+		BasicDBObject[] ps = produtosObj.toArray(new BasicDBObject[0]);
+		List<Produto> produtos = new ArrayList<Produto>();
+		for (BasicDBObject produtoObj : ps){
+			Produto produto = new Produto();
+			produto.setCodigo(produtoObj.getString("codigo"));
+			produto.setDescricao(produtoObj.getString("descricao"));
+			produto.setQuantidade(produtoObj.getInt("quantidade"));
+			produto.setValorUnitario(produtoObj.getInt("valor_unitario"));
+			
+			produtos.add(produto);
+		}
+		
+		pedido.setProdutos(produtos);
+		
+		return pedido;
+	}
+	
+	public void remover(int numero){
+		BasicDBObject query = new BasicDBObject();
+		query.put("numero", new BasicDBObject("$eq", numero));
+		colecao.remove(query);
 	}
 	
 

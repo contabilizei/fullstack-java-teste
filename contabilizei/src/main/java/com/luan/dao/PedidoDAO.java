@@ -7,6 +7,6 @@ import com.luan.models.Pedido;
 public interface PedidoDAO {
 	public void inserir(Pedido pedido);
     public Pedido buscarPorNumero(int Numero);
-    public void remover(String codigo);
+    public void remover(int numero);
     public List<Pedido> listarTodos();
 }
