@@ -1,18 +1,17 @@
 package com.luan.dao;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
-import java.util.Locale;
+import java.util.List;
 
 import com.luan.models.Cliente;
 import com.luan.models.Pedido;
 import com.luan.models.Produto;
+import com.mongodb.BasicDBList;
 import com.mongodb.BasicDBObject;
 import com.mongodb.Cursor;
 import com.mongodb.DB;
 import com.mongodb.DBCollection;
-import com.mongodb.DBObject;
 import com.mongodb.MongoClient;
 
 public class MongoDBPedidoDAO {
@@ -35,7 +34,7 @@ public class MongoDBPedidoDAO {
 		cliente.put("telefone", pedido.getCliente().getTelefone());
 		document.put("cliente", cliente);
 		
-		BasicDBObject produtos = new BasicDBObject();
+		BasicDBList produtos = new BasicDBList();
 		for(Produto produto : pedido.getProdutos()){
 			BasicDBObject p = new BasicDBObject();
 			p.put("codigo",produto.getCodigo());
@@ -43,7 +42,7 @@ public class MongoDBPedidoDAO {
 			p.put("quantidade",produto.getQuantidade());
 			p.put("valor_unitario",produto.getValorUnitario());
 			
-			produtos.append("produto", p);
+			produtos.add(p);
 		}
 		
 		document.put("produtos", produtos);
@@ -59,17 +58,15 @@ public class MongoDBPedidoDAO {
 		Cursor cursor = colecao.find(query);
 		try {
 		    while (cursor.hasNext()) {
-		    	DBObject o = new BasicDBObject();
-		    	pedido.setNumero( Integer.parseInt((String) o.get("numero")));
-		    	pedido.setValorTotal(Integer.parseInt((String) o.get("valor_total")));
-		        
-		    	String dataDeEmissao = (String) o.get("data_emissao");
-		    	try{
-		    		Date date = new SimpleDateFormat("y-m-d", Locale.ENGLISH).parse(dataDeEmissao);
-		    		pedido.setDataDeEmissao(date);
-		    	} catch ( ParseException pe) { }
+		    	BasicDBObject obj = (BasicDBObject) cursor.next();
 		    	
-		    	BasicDBObject c = (BasicDBObject) o.get("cliente");
+		    	pedido.setNumero( obj.getInt("numero"));
+		    	pedido.setValorTotal( obj.getInt("valor_total"));
+		        
+		    	Date dataDeEmissao = obj.getDate("data_emissao");
+		    	
+		    	pedido.setDataDeEmissao(dataDeEmissao);
+		    	BasicDBObject c = (BasicDBObject) obj.get("cliente");
 		    	Cliente cliente = new Cliente();
 		    	cliente.setCpf(c.getInt("cpf"));
 		    	cliente.setNome(c.getString("nome"));
@@ -77,12 +74,22 @@ public class MongoDBPedidoDAO {
 		    	cliente.setTelefone(c.getInt("telefone"));
 		    	pedido.setCliente(cliente);
 		    	
-		    	BasicDBObject[] ps = (BasicDBObject[]) o.get("produtos");
-		    	for (BasicDBObject p : ps){
-		    		//pegar produtos. produtos { [produto: {}}, {produto:{}} ]
-		    	}
+		    	BasicDBList produtosObj = (BasicDBList) obj.get("produtos");
+		    	BasicDBObject[] ps = produtosObj.toArray(new BasicDBObject[0]);
+		    	List<Produto> produtos = new ArrayList<Produto>();
+		    	for (BasicDBObject produtoObj : ps){
+		    		Produto produto = new Produto();
+		    		produto.setCodigo(produtoObj.getString("codigo"));
+		    		produto.setDescricao(produtoObj.getString("descricao"));
+		    		produto.setQuantidade(produtoObj.getInt("quantidade"));
+		    		produto.setValorUnitario(produtoObj.getInt("valor_unitario"));
+		    		
+		    		produtos.add(produto);
+		      	}
 		    	
-		    	//System.out.println(cursor.next());
+		    	pedido.setProdutos(produtos);
+		    	
+		    	
 		    }
 		} finally {
 		    cursor.close();

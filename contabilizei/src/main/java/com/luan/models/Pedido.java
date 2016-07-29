@@ -46,9 +46,9 @@ public class Pedido {
 		produtos.add(produto);
 	}
 	
-	public Produto getProduto(Produto produto){
+	public Produto getProdutoByCodigo(String codigo){
 		for (Produto p : produtos)
-			if (p.getCodigo() == produto.getCodigo())
+			if (p.getCodigo() == codigo)
 				return p;
 		return null;
 	}
