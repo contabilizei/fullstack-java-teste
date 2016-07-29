@@ -104,5 +104,22 @@ public class MongoDBPedidoDAO {
 		colecao.remove(query);
 	}
 	
+	public List<Pedido> listarTodos(){
+		List<Pedido> pedidos = new ArrayList<Pedido>();
+		
+		Cursor cursor = colecao.find();
+		
+		try {
+		    while (cursor.hasNext()) {
+		    	pedidos.add(getPedido((BasicDBObject) cursor.next()));
+		    }
+		} finally {
+		    cursor.close();
+		}
+		
+		return pedidos;
+		
+	}
+	
 
 }

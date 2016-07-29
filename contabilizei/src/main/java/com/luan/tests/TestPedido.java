@@ -5,6 +5,7 @@ import static org.junit.Assert.assertEquals;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 import org.junit.Before;
@@ -101,9 +102,17 @@ public class TestPedido {
 	}
 	
 	@Test
-	public void removerPedido(){
+	public void testRemoverPedido(){
 		MongoDBPedidoDAO mdbpdao = new MongoDBPedidoDAO();
 		mdbpdao.remover(1);
+	}
+	
+	@Test
+	public void testListarPedidos(){
+		MongoDBPedidoDAO mdbpdao = new MongoDBPedidoDAO();
+		List<Pedido> pedidos = mdbpdao.listarTodos();
+		
+		assertEquals(pedido2.getNumero(),pedidos.get(0).getNumero());
 	}
 
 }
