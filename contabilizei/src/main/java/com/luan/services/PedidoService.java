@@ -40,4 +40,9 @@ public class PedidoService {
 		mdbpdao.remover(numero);;
 	}
 
+	public void atualizaPedido(Pedido pedido) {
+		mdbpdao.remover(pedido.getNumero());
+		mdbpdao.inserir(pedido);
+	}
+
 }
