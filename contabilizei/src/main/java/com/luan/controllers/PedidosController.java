@@ -19,17 +19,7 @@ import com.luan.services.PedidoService;
 public class PedidosController {
 	
 	private PedidoService pedidoService = new PedidoService();
- 
-/*	@GET
-	@Path("/{param}")
-	public Response getMsg(@PathParam("param") String msg) {
- 
-		String output = " Olá, API. Seja bem vindo: " + msg;
- 
-		return Response.status(200).entity(output).build();
- 
-	}
-	*/
+
 	@GET
 	@Path("/{numero}")
 	@Produces(MediaType.APPLICATION_JSON)
