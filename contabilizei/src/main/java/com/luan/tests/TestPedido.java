@@ -53,10 +53,7 @@ public class TestPedido {
 		produto2.setValorUnitario(7);
 		
 		pedido2 = new Pedido();
-		try{
-			Date date = new SimpleDateFormat("y-m-d", Locale.ENGLISH).parse(dataDeEmissao);
-			pedido.setDataDeEmissao(date);
-		} catch (ParseException pe) {}
+		pedido.setDataDeEmissao(date);
 		pedido2.setNumero(2);
 		pedido2.addProduto(produto);
 		pedido2.addProduto(produto2);
