@@ -31,10 +31,10 @@ public class TestPedido {
 		produto.setValorUnitario(9);
 		
 		cliente = new Cliente();
-		cliente.setCpf(1234567890);
+		cliente.setCpf(new Long(1234567890));
 		cliente.setEmail("eu@email.com");
 		cliente.setNome("Joao");
-		cliente.setTelefone(33333333);
+		cliente.setTelefone(new Long(33333333));
 		
 		String dataDeEmissao = "2017-07-21";
 		date = new SimpleDateFormat("y-m-d", Locale.ENGLISH).parse(dataDeEmissao);

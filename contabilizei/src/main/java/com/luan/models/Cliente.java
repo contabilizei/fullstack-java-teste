@@ -1,15 +1,15 @@
 package com.luan.models;
 
 public class Cliente {
-	private int cpf;
+	private Long cpf;
 	private String nome;
-	private int telefone;
+	private Long telefone;
 	private String email;
 	
-	public int getCpf() {
+	public Long getCpf() {
 		return cpf;
 	}
-	public void setCpf(int cpf) {
+	public void setCpf(Long cpf) {
 		this.cpf = cpf;
 	}
 	public String getNome() {
@@ -18,10 +18,10 @@ public class Cliente {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public int getTelefone() {
+	public Long getTelefone() {
 		return telefone;
 	}
-	public void setTelefone(int telefone) {
+	public void setTelefone(Long telefone) {
 		this.telefone = telefone;
 	}
 	public String getEmail() {

@@ -74,10 +74,10 @@ public class MongoDBPedidoDAO {
 		pedido.setDataDeEmissao(dataDeEmissao);
 		BasicDBObject c = (BasicDBObject) obj.get("cliente");
 		Cliente cliente = new Cliente();
-		cliente.setCpf(c.getInt("cpf"));
+		cliente.setCpf(c.getLong("cpf"));
 		cliente.setNome(c.getString("nome"));
 		cliente.setEmail(c.getString("email"));
-		cliente.setTelefone(c.getInt("telefone"));
+		cliente.setTelefone(c.getLong("telefone"));
 		pedido.setCliente(cliente);
 		
 		BasicDBList produtosObj = (BasicDBList) obj.get("produtos");
