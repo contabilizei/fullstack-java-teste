@@ -1,0 +1,26 @@
+<h2>Lista de pedidos</h2>
+
+<table class="table table-striped">
+	<thead>
+		<th>Número</th>
+		<th>Data de emissão</th>
+		<th>Quantidade de produdtos</th>
+		<th>Valor total</th>
+		<th>Cliente</th>
+		<th>Ações</th>
+	</thead>
+	<tbody>
+		<tr ng-repeat="pedido in pedidos">
+			<td># {{pedido.numero}}</td>
+			<td>{{pedido.dataDeEmissao}}</td>
+			<td>{{pedido.produtos.length}}</td>
+			<td>{{pedido.valorTotal}}</td>
+			<td>{{pedido.cliente.nome}}</td>
+			
+			<td><a ng-href="#/show/{{pedido.numero}}" class="btn btn-success">Ver</a>
+				<a ng-href="#/edit/{{pedido.numero}}" class="btn btn-warning">Editar</a>
+				<button ng-click="delete(pedido.numero)" class="btn btn-danger">Apagar</button>
+			</td>
+		</tr>
+	</tbody>
+</table>

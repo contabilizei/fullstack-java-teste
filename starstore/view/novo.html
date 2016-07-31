@@ -1,0 +1,42 @@
+<h2>Novo pedido</h2>
+
+<form method="POST" class="form">
+	<div class="row">
+		<h4>Cadastro de cliente</h4>
+		<hr>
+		<label>
+			Nome
+			<input type="text" ng-model="pedido.cliente.nome" class="form-control" size="30" placeholder="Ex: João da Silva" required>
+		</label>
+		<label>
+			CPF
+			<input type="text" ng-model="pedido.cliente.cpf" class="form-control" size="30" placeholder="Ex: 1234567890" required>
+		</label>
+		<label>
+			Telefone
+			<input type="text" ng-model="pedido.cliente.telefone" class="form-control" size="30" placeholder="Ex: 33333333" required>
+		</label>
+		<label>
+			E-mail
+			<input type="email" ng-model="pedido.cliente.email" class="form-control" size="30" placeholder="Ex: eu@email.com" required>
+		</label>
+	</div>
+	
+	<div class="row"  style="margin-bottom:20px;">
+		<h4>Escolha os produtos</h4>
+		<h3>{{pedido}}</h3>
+		<hr>
+		
+		<div class="col-lg-4" ng-repeat="produto in produtos">
+			<h3>{{produto.descricao}}</h3>
+			<p>{{"Z$" + produto.valor + ".00"}}</p>
+			<img src="img/{{produto.img}}" alt="{{produto.img}}" width="100%">
+			
+			<input type="number" ng-model="pedido.quantidade[produto.codigo]" placeholder="quantidade" class="form-control" min=0>
+		</div>
+	</div>
+	<div class="row">
+		<br>
+		<button ng-click="comprar(pedido)" class="btn btn-primary">Comprar</button>
+	</div>
+</form>
