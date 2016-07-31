@@ -15,7 +15,7 @@ Java
 Apache Tomcat 7
 Mongodb 3.2.5
 Angularjs 1.5
-RERT API Jersey
+REST API Jersey
 Bootstrap 4
 HTML5
 ```
@@ -47,7 +47,7 @@ HTML5
 ## Diretórios
 ```
 /contabilizei - Projeto em Java com a API REST
-/starstore - Projeto em Angularjs da **StarStore**
+/starstore - Projeto em Angularjs da StarStore
 /screens - imagens da aplicação
 ```
 
