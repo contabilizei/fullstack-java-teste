@@ -25,7 +25,11 @@ public class PedidosController {
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response getPedido(@PathParam("numero") int numero) {
 		Pedido pedido = pedidoService.getByNumero(numero);
-		return Response.status(200).entity(pedidoService.toJson(pedido)).build();
+		return Response.status(200)
+				.entity(pedidoService.toJson(pedido))
+				.header("Access-Control-Allow-Origin", "*")
+				.header("Access-Control-Allow-Methods", "GET, POST, DELETE, PUT")
+				.build();
 	}
 	
 	@GET
@@ -33,7 +37,11 @@ public class PedidosController {
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response getTodosOsPedidos() {
 		List<Pedido> pedidos = pedidoService.getAll();
-		return Response.status(200).entity(pedidoService.toJson(pedidos)).build();
+		return Response.status(200)
+				.entity(pedidoService.toJson(pedidos))
+				.header("Access-Control-Allow-Origin", "*")
+				.header("Access-Control-Allow-Methods", "GET, POST, DELETE, PUT")
+				.build();
 	}
 	
 	@POST
@@ -42,7 +50,11 @@ public class PedidosController {
 	public Response salvaPedido(String pedidoJson) {
 		Pedido pedido = pedidoService.fromJson(pedidoJson);
 		pedidoService.salvaPedido(pedido);
-		return Response.status(200).entity(pedidoService.toJson(pedido)).build();
+		return Response.status(200)
+				.entity(pedidoService.toJson(pedido))
+				.header("Access-Control-Allow-Origin", "*")
+				.header("Access-Control-Allow-Methods", "GET, POST, DELETE, PUT")
+				.build();
 	}
 	
 	@DELETE
@@ -50,7 +62,11 @@ public class PedidosController {
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response deletePedido(@PathParam("numero") int numero) {
 		pedidoService.remover(numero);
-		return Response.status(200).entity("").build();
+		return Response.status(200)
+				.entity("")
+				.header("Access-Control-Allow-Origin", "*")
+				.header("Access-Control-Allow-Methods", "GET, POST, DELETE, PUT")
+				.build();
 	}
 	
 	@PUT
