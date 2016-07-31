@@ -1,0 +1,41 @@
+<h2>Visualizar pedido #{{numero}}</h2>
+<hr>
+<h3>Detalhes do pedido</h3>
+<p><strong>Valor Total:</strong> Z${{pedido.valorTotal}}.00</p>
+<p><strong>Data de Emissão:</strong> {{pedido.dataDeEmissao}}</p>
+
+<h3>Cliente</h3>
+<table class="table table-striped">
+	<thead>
+		<th>Nome</th>
+		<th>CPF</th>
+		<th>E-mail</th>
+		<th>Telefone</th>
+	</thead>
+	<tbody>
+		<tr>
+			<td>{{pedido.cliente.nome}}</td>
+			<td>{{pedido.cliente.cpf}}</td>
+			<td>{{pedido.cliente.email}}</td>
+			<td>{{pedido.cliente.telefone}}</td>
+		</tr>
+	</tbody>
+</table>
+
+<h3>Produtos:</h3>
+<table class="table table-striped">
+	<thead>
+		<th>Código</th>
+		<th>Quantidade</th>
+		<th>Descrição</th>
+		<th>Valor Unitário</th>
+	</thead>
+	<tbody>
+		<tr ng-repeat="produto in pedido.produtos">
+			<td>{{produto.codigo}}</td>
+			<td>{{produto.quantidade}}</td>
+			<td>{{produto.descricao}}</td>
+			<td>{{produto.valorUnitario}}</td>
+		</tr>
+	</tbody>
+</table>

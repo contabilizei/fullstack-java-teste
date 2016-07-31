@@ -28,7 +28,7 @@ public class PedidosController {
 		return Response.status(200)
 				.entity(pedidoService.toJson(pedido))
 				.header("Access-Control-Allow-Origin", "*")
-				.header("Access-Control-Allow-Methods", "GET, POST, DELETE, PUT")
+				.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS, DELETE, PUT")
 				.build();
 	}
 	
@@ -40,7 +40,7 @@ public class PedidosController {
 		return Response.status(200)
 				.entity(pedidoService.toJson(pedidos))
 				.header("Access-Control-Allow-Origin", "*")
-				.header("Access-Control-Allow-Methods", "GET, POST, DELETE, PUT")
+				.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS, DELETE, PUT")
 				.build();
 	}
 	
@@ -53,7 +53,7 @@ public class PedidosController {
 		return Response.status(200)
 				.entity(pedidoService.toJson(pedido))
 				.header("Access-Control-Allow-Origin", "*")
-				.header("Access-Control-Allow-Methods", "GET, POST, DELETE, PUT")
+				.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS, DELETE, PUT")
 				.build();
 	}
 	
@@ -65,7 +65,7 @@ public class PedidosController {
 		return Response.status(200)
 				.entity("")
 				.header("Access-Control-Allow-Origin", "*")
-				.header("Access-Control-Allow-Methods", "GET, POST, DELETE, PUT")
+				.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS, DELETE, PUT")
 				.build();
 	}
 	
