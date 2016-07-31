@@ -1,115 +1,79 @@
-# Por que trabalhar na Contabilizei
+# StarStore
+Teste para vaga de dev Fullstack na Contabilizei.
 
-teste 
-**Eleita a melhor startup B2B da América Latina em 2016, a Contabilizei** é um escritório de contabilidade online, líder de mercado, com sede em Curitiba (PR). Nosso propósito é resolver a dor e burocracia de micro e pequenas empresas ao se manterem regulares com o governo. Somos contadores, só que online, simples assim. Acreditamos no poder da tecnologia para melhorar continuamente a vida das pessoas. 
+**StarStore** é o melhor gerenciador de pedidos de naves espaciais da galáxia.
 
-Se você tem espírito e comportamento empreendedor, muita disposição e proatividade para trabalhar em uma empresa em franca expansão, você é um forte candidato :)
+## Serviços
+1. Listagem de pedidos
+2. Consulta de pedido
+3. Atualização de pedido
+4. Remoção de pedido
 
-Como Desenvolvedor Full-stack você irá atuar no desenvolvimento de soluções em arquitetura Java Web MVC com RestFul APis (JAX-RS), integrações com outros sistemas (SOAP, XML, JSON), banco de dados NoSQL e soluções escaláveis, participando de todo o processo de desenvolvimento, desde tomadas de decisões à codificação e testes.
+## Tecnologias
+```
+Java
+Apache Tomcat 7
+Mongodb 3.2.5
+Angularjs 1.5
+RERT API Jersey
+Bootstrap 4
+HTML5
+```
 
-### O que fazem os Ninjas da Contabilizei? O que comem (e bebem)? Onde vivem?
+## Exemplo de documento de pedido armazenado no Mongodb
+```
+{
+    "_id" : ObjectId("579d66434795871de83aefc2"),
+    "numero" : 14,
+    "data_de_emissao" : ISODate("2016-07-30T23:45:23.869-03:00"),
+    "valor_total" : 50,
+    "cliente" : {
+        "cpf" : 123345,
+        "nome" : "Luan Andrade",
+        "email" : "luan@email.com",
+        "telefone" : NumberLong(2433333333)
+    },
+    "produtos" : [ 
+        {
+            "codigo" : "ABC",
+            "descricao" : "Nave 1",
+            "quantidade" : 5,
+            "valor_unitario" : 10
+        }
+    ]
+}
+```
 
-Somos um time de desenvolvimento ágil, focado em fazer as coisas acontecerem. Trabalhamos com Kanban, entregas contínuas, Git, Cloud, aplicações distribuídas e mais uma porrada de tecnologias novas... Queremos que nosso cliente tenha o produto e a experiência mais fodásticos do planeta. Gostamos de compartilhar ideias, testar tecnologias e de cerveja :)
+## Diretórios
+```
+/contabilizei - Projeto em Java com a API REST
+/starstore - Projeto em Angularjs da **StarStore**
+/screens - imagens da aplicação
+```
 
-# O trabalho por aqui
+## Rodando
+1. Abra o projeto **contabilizei** no Eclipse
+2. Rode o projeto no servidor desejado
+3. Abra a aplicação **starstore** no servidor e inicie
+4. Navegue pelos menus
 
-Que tal fazer parte de um time com atitude “get Fˆ%#ing things done”? Participar de uma das maiores disrupções no mercado? Ter a oportunidade de trabalhar com tecnologias e conceitos inovadores, como:
-* Práticas ágeis como Kanban / Scrum
-* Google Cloud Platform
-* Escalabilidade
-* Micro services e aplicações distribuídas
-* Kubernetes
-* Git
-* AngularJs
-* Material Design
-* BDD
+**Pode ser necessário definir credenciais de acesso ao seu banco de dados Mongodb!!**
 
-Mais informações sobre a vaga você encontra aqui: [Desenvolvedor Full Stack Java na Contabilizei](https://jobs.lever.co/contabilizei/826c32bd-d800-475a-9f05-531e86dc4ea3)
+## Comandos para testar a API (Pode ser feito via POSTMAN)
+```
+1. Retornar um pedido pelo número (GET)
+curl "http://localhost:8080/contabilizei/rest/pedidos/2"
 
-# O que preciso fazer?
+2. Retornar todos os pedidos (GET)
+curl "http://localhost:8080/contabilizei/rest/pedidos/"
 
-Vamos ser práticos e diretos, se você quer trabalhar conosco siga os passos abaixo:
+3. Salvando um pedido (POST)
+curl -X POST -H "Accept: application/json" -H  -d '{"valorTotal":100,"produtos":[{"codigo":"ABC","descricao":"DEF","quantidade":10,"valorUnitario":9},{"codigo":"ABCDEF","descricao":"GHI","quantidade":19,"valorUnitario":7}],"cliente":{"cpf":1234567890,"nome":"Joao","telefone":33333333,"email":"eu@email.com"}}' "http://localhost:8080/contabilizei/rest/pedidos/"
 
-* Faça um "fork" desse projeto para sua conta GitHub.
-* Implemente o desafio descrito no tópico abaixo.
-* Faça um push para seu repositório com o desafio implementado.
-* Envie um email para (souninja@contabilizei.com.br) avisando que finalizou o desafio com a url do seu fork.
-* Cruze os dedos e aguarde nosso contato.
+3. Deletando pedido pelo numero (DELETE)
+curl -X DELETE "http://localhost:8080/contabilizei/rest/pedidos/4"
 
-# O desafio (CRUD de pedidos)
+4. Atualizando pedido (PUT)
+curl -X POST -H "Accept: application/json" -H  -d '{"numero": 3,"valorTotal":101,"produtos":[{"codigo":"ABC","descricao":"DEF","quantidade":10,"valorUnitario":9},{"codigo":"ABCDEF","descricao":"GHI","quantidade":19,"valorUnitario":7}],"cliente":{"cpf":1234567890,"nome":"Joao","telefone":33333333,"email":"eu@email.com"}}' "http://localhost:8080/contabilizei/rest/pedidos/"
 
-Você deverá criar 2 aplicações para cadastramento de pedidos de venda: 
-
-**Back-end:** aplicação JavaEE baseada em Web Services no padrão RESTful JAX-RS.
-
-**Front-end:** Single Page Application que se comunique com estes serviços. 
-
-A aplicação Back-end dever ter, ao menos, serviços para: inclusão, alteração, exclusão e listagem dos pedidos.
-
-Pedidos deverão conter: 
-* número
-* data de emissão
-* cliente
-* lista de produtos
-* valor total
- 
-Cada produto do pedido deve ter: 
-* código
-* descrição
-* quantidade
-* valor unitário
-
-No pedido, deve constar as seguintes informações do cliente: 
-* cpf ou cnpj
-* nome ou razão social
-* telefone
-* e-mail
-
-### Tecnologias
-
-Escolha umas das opções abaixo para implementar sua solução. A modelagem dos dados fica a seu critério. Não se preocupe com autenticação ou multitenancy.
-
-#### Back-end
-
-**Opção 1**
-
-* Aplicação JavaEE utilizando framework [**Google App Engine para Java**](https://cloud.google.com/appengine/)
-* Banco de dados NOSQL [Datastore](https://cloud.google.com/datastore/)
-* RESTFul API com [Google Endpoints](https://cloud.google.com/appengine/docs/java/endpoints/) ou Jersey JAX-RS
-
-**Opção 2**
-
-* Aplicação pura JavaEE 
-* RESTful API JAX-RS utilizando Servlets ou framework Jersey
-* Banco de dados SQL (MySQL, PostgreSQL, HSQLDB) ou NOSQL(MongoDB, Cassandra)
-
-#### Front-end
-
-* Single Page Application utilizando apenas HTML5 e CSS3 
-* Javascript puro / JQuery (e plugins)
-* Bootstrap (http://getbootstrap.com/)
-* AngularJS 1.x e Angular Material Design (estes são opcionais e são diferenciais)
-
-**Atenção:** não utilize frameworks ou tecnologias não mencionados acima.
-
-### Arquitetura e documentação
-
-No arquivo README do projeto explique o funcionamento e a arquitetura da solução adotada na sua implementação. Descreva também os passos para executar corretamente seu projeto.
-
-### Avaliação
-
-Entre os critérios de avaliação estão:
-
-* Facilidade de configuração do projeto
-* Performance
-* Código limpo e organização
-* Documentação de código
-* Documentação do projeto (readme)
-* Arquitetura
-* Boas práticas de desenvolvimento
-* Design Patterns
-
-# Sobre você
-
-Queremos saber um pouco mais sobre você também :) Por favor, responda o questionário do arquivo [questions.md](questions.md) e envie junto com seu projeto.
-
+```
