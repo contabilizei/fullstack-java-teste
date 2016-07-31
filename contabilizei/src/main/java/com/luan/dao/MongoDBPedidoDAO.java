@@ -69,7 +69,7 @@ public class MongoDBPedidoDAO {
 		pedido.setNumero( obj.getInt("numero"));
 		pedido.setValorTotal( obj.getInt("valor_total"));
 		
-		Date dataDeEmissao = obj.getDate("data_emissao");
+		Date dataDeEmissao = obj.getDate("data_de_emissao");
 		
 		pedido.setDataDeEmissao(dataDeEmissao);
 		BasicDBObject c = (BasicDBObject) obj.get("cliente");
