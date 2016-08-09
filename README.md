@@ -10,7 +10,7 @@ Projeto desenvolvido para o processo seletivo da Contabilizei
 	* Tomcat 8
 	* MySQL
 
--Front-End
+- Front-End
 	* HTML5
 	* Bootstrap ~3.3.7
 	* JavaScript
@@ -35,11 +35,12 @@ estão sendo executadas nessa porta.
 No desenvolvimento da Single Page Application, foi utilizado o NPM como gerenciador de pacotes após clonar o 
 projeto execute ```npm install [opcional --save]``` para baixar suas dependências.
 
-Para evitar problemas com Access-Control-Allow-Origin dos Browsers, deve ser executado o projeto em cima de um
-servidor HTTP local, pode ser o do node http-server que é instalado através ```npm install http-server -g``` ou o 
-do Python caso tenha instalado na máquina. 
+Para evitar problemas com Access-Control-Allow-Origin dos Browsers, o projeto deve ser executado em cima de um
+simples servidor HTTP local, pode ser o do ```node http-server``` que é instalado através 
+```npm install http-server -g``` ou o do Python caso tenha instalado na máquina. 
 
 Exemplos de como executar a SPA, dentro da pasta app_pedidoscontabilizei execute:
 
 - Utilizando Python: ```python -m http.server 8888```
 - Utilizando node: ```http-server -p 8888```
+
