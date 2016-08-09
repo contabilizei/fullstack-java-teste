@@ -1,0 +1,99 @@
+<div id="pedidos" ng-controller="pedidosController">
+  <p>
+    <button class="btn btn-success" data-toggle="tooltip" data-placement="right" 
+      title="Atualize os dados de Cliente e Produtos" ng-click="buscaTodos()">
+      Atualizar Dados
+    </button>
+  </p>
+
+  <div class="panel panel-default">
+    <div class="panel-heading">Cadatro de Pedidos</div>
+      <div class="panel-body">	
+        <form name="pedidoForm" class="form-group">
+        	<input type="hidden" ng-model="produto.codigo">
+        	<input type="hidden" ng-model="produto.documentoCliente">  	
+
+      		<div class="form-group">
+            <label for="nomeCliente">Cliente</label>
+            <select name="nomeCliente" class="form-control selectpicker"
+              ng-options="c.cpfCnpj as c.nomRazaoSocial for c in clientes"
+              ng-model="pedido.documentoCliente" >
+              <option value="">Selecione um Cliente</option>
+            </select>
+          </div>
+
+          <div class="form-group">		      		
+            <label for="produto">Produtos</label>
+            <select name="produtoCodigo" class="form-control selectpicker" required
+            	ng-model="pedido.codigo" ng-options="p.codigo as p.descricao for p in produtos">
+              <option value="">Selecione um Produto</option>
+            </select>
+            
+            <br>
+
+            <button class="btn btn-default" ng-click="adicionarProduto(pedido.codigo)">
+            	Adicionar Produto
+            </button>
+
+            <table class="table table-bordered">
+            	<thead>
+            			<th>Código</th>
+            			<th>Descrição</th>
+            			<th>Valor Unitário</th>      			
+            			<th>Excluir Produto</th>      			
+            	</thead>
+            	<tbody>      	
+            		<tr ng-repeat="produtoPedido in produtosPedido">
+            			<td>{{ produtoPedido.codigo }}</td>
+            			<td>{{ produtoPedido.descricao }}</td>
+            			<td>{{ produtoPedido.valorUnitario}}</td>
+            			<td>
+            				<button class="btn" ng-click="removerProduto(produtoPedido.codigo)">
+            					Excluir
+            				</button>
+            			</td>
+            		</tr>
+            	</tbody>
+            </table>
+          </div>
+
+          <div class="form-group">		      		
+            <label for="valorUnitario">Valor Total</label>
+            <input id="valorUnitario" type="number" class="form-control" readonly="true" 
+            	ng-required="true" pattern="([0-9]{1,10}\.)?[0-9]{1,10}.[0-9]{2}$"
+            	ng-model="pedido.valorTotal">
+          </div>
+                    
+          <button type="button" class="btn btn-default" ng-click="cancelar()">Cancelar</button>    
+         	<button type="button" class="btn btn-primary" ng-disabled="produtoForm.$invalid"
+         		ng-click="inserir(pedido)" ng-hide="escondeAdicionar">
+         		Adicionar
+          </button>
+          <button type="button" class="btn btn-primary" ng-disabled="produtoForm.$invalid"
+          	ng-click="alterar(pedido)" ng-hide="!escondeAdicionar">
+         		Alterar
+          </button>
+      	</form>	
+      </div>
+    </div>
+
+	<table class="table table-bordered" ng-init="buscaTodos()">
+		<thead>
+			<th>Nº Pedido</th>
+			<th>Cliente</th>				
+			<th>Valor Total</th>
+			<th>Ações</th>
+		</thead>
+		<tbody>
+			<tr ng-repeat="pedido in pedidos">
+				<td>{{ pedido.numero }}</td>
+				<td>{{ pedido.nomeCliente }}</td>
+				<td>{{ pedido.valorTotal }}</td>
+				<td>
+					<button class="btn" ng-click="carregarFormulario(pedido.numero)">Editar</button>
+					<button class="btn" ng-click="excluir(pedido.numero)">Excluir</button>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
