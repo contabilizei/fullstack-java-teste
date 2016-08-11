@@ -128,14 +128,23 @@
 		function buscaDadosIniciais() {
 			pedidoAPI.buscaTodos().success(function (data) {
 				$scope.pedidos = data;				
+			})
+			.error(function (data) {
+				console.log(data);
 			});
 
 			clienteAPI.buscaTodos().success(function (data) {
 				$scope.clientes = data;				
+			})
+			.error(function (data) {
+				console.log(data);
 			});
 
 			produtoAPI.buscaTodos().success(function (data) {
 				$scope.produtos = data;
+			})
+			.error(function (data) {
+				console.log(data);
 			});
 		}
 
