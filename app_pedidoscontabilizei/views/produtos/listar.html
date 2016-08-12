@@ -50,7 +50,7 @@
 				<td>{{ produto.codigo }}</td>
 				<td>{{ produto.descricao }}</td>
 				<td>{{ produto.quantidade }}</td>
-				<td>{{ produto.valorUnitario }}</td>
+				<td>{{ produto.valorUnitario | currency:"R$ " }}</td>
 				<td>						
 					<button class="btn" ng-click="carregarFormulario(produto.codigo)" >
 						Editar
