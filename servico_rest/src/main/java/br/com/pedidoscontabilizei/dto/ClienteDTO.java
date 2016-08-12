@@ -5,7 +5,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 public class ClienteDTO {
 	
-	private String cpfCnpj;
+	private String documentoCliente;
 	private String nomRazaoSocial;
 	private String telefone;
 	private String email;
@@ -13,12 +13,12 @@ public class ClienteDTO {
 	public ClienteDTO() {
 	}
 
-	public String getCpfCnpj() {
-		return cpfCnpj;
+	public String getDocumentoCliente() {
+		return documentoCliente;
 	}
 
-	public void setCpfCnpj(String cpfCnpj) {
-		this.cpfCnpj = cpfCnpj;
+	public void setDocumentoCliente(String cpfCnpj) {
+		this.documentoCliente = cpfCnpj;
 	}
 
 	public String getNomRazaoSocial() {

@@ -62,7 +62,7 @@ public class ClienteServico {
 
 	private ClienteDTO converteParaDTO(Cliente cliente) {
 		ClienteDTO dto = new ClienteDTO();
-		dto.setCpfCnpj(cliente.getCpfCnpj());
+		dto.setDocumentoCliente(cliente.getCpfCnpj());
 		dto.setNomRazaoSocial(cliente.getNomRazaoSocial());
 		dto.setEmail(cliente.getEmail());
 		dto.setTelefone(cliente.getTelefone());
@@ -72,7 +72,7 @@ public class ClienteServico {
 
 	private Cliente converteParaModelo(ClienteDTO clienteDTO) {
 		Cliente cliente = new Cliente();
-		cliente.setCpfCnpj(clienteDTO.getCpfCnpj());
+		cliente.setCpfCnpj(clienteDTO.getDocumentoCliente());
 		cliente.setNomRazaoSocial(clienteDTO.getNomRazaoSocial());
 		cliente.setEmail(clienteDTO.getEmail());
 		cliente.setTelefone(clienteDTO.getTelefone());
