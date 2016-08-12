@@ -22,19 +22,19 @@
 			resetPedidos();
 
 			pedidoAPI.buscaPorCodigo(codigo).success(function (data) {
-				$scope.pedido = data;
-				$scope.escondeAdicionar = true;
+				$scope.pedido = data;			
+				$scope.escondeAdicionar = true;						
 				let tamanho = data.codigoProdutos.length;
 
 				for (var i = 0; i < tamanho; i++) {
-						var obj = new Object();
+						var obj = new Object();						
 						obj.codigo = data.codigoProdutos[i];
 						obj.descricao = data.descricaoProdutos[i];
 						obj.valorUnitario = data.valorUnitarioProdutos[i];
 
 						$scope.codigoProdutos.push(obj.codigo);
 						$scope.produtosPedido.push(obj);						
-				}				
+				}								
 			})
 		}
 
@@ -43,7 +43,7 @@
 				alert("Ops! Os dados do seu pedido são inválidos!");
 			}
 
-			pedido.codigoProdutos = $scope.codigoProdutos;
+			pedido.codigoProdutos = $scope.codigoProdutos;			
 
 			pedidoAPI.inserir(pedido).success(function (data) {
 				limpaDados();
@@ -73,13 +73,13 @@
 			});
 		}
 
-		$scope.adicionarProduto = function (codigo) {
-			if (codigo === '' || codigo === undefined) {
+		$scope.adicionarProduto = function (produto) {
+			if (produto === undefined) {
 				return;
 			}
 
 			let existente = $scope.produtosPedido.some(function (arg) {
-				return arg.codigo == codigo;
+				return arg.codigo == produto.codigo;
 			})
 
 			if (existente) {
@@ -87,13 +87,10 @@
 				return false;
 			}
 
-			produtoAPI.buscaPorCodigo(codigo).success(function (data) {
-				$scope.codigoProdutos.push(data.codigo);
+			$scope.codigoProdutos.push(produto.codigo);
+			$scope.produtosPedido.push(produto);
 
-				$scope.produtosPedido.push(data);
-
-				calculaTotal();
-			})
+			calculaTotal();		
 		}
 
 		$scope.removerProduto = function (codigo) {
@@ -126,6 +123,10 @@
 		}
 
 		function buscaDadosIniciais() {
+			$scope.pedidos = [];
+			$scope.produtos = [];
+			$scope.clientes = [];
+
 			pedidoAPI.buscaTodos().success(function (data) {
 				$scope.pedidos = data;				
 			})
