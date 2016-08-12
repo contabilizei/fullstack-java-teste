@@ -14,10 +14,12 @@
 			buscarTodos();
 		}
 
-		$scope.carregarFormulario = function (cpf) {
-			clienteAPI.buscaPorCPF(cpf).success(function (data) {
+		$scope.carregarFormulario = function (documento) {
+			clienteAPI.buscaPorCPF(documento).success(function (data) {
 				$scope.cliente = data;
 				$scope.escondeAdicionar = true;
+
+				$('#documentoCliente').attr('readonly', 'documentoCliente');
 			});
 		}
 
@@ -67,10 +69,11 @@
 		}
 
 		function resetCliente() {
-			$('#nomRazaoSocial').val('');
+			$('#nomRazaoSocial').val('');			
 			$('#cpfCnpj').val('');
 			$('#telefone').val('');
 			$('#telefone').val('');
+			$('#documentoCliente').removeAttr('readonly', 'documentoCliente');
 		}
 
 		function mostraErro(data) {
