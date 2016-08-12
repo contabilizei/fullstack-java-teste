@@ -1,0 +1,70 @@
+<div id="clientes" hidden ng-controller="clientesController">	
+	<div class="panel panel-default">
+		<div class="panel-heading">Cadatro de Clientes</div>
+			<div class="panel-body">
+			  <form name="clienteForm" class="form-group">
+					<div class="form-group">		      		
+			      <label for="nomRazaoSocial">Nome/Razão Social</label>
+			      <input id="nomRazaoSocial" type="text" class="form-control"		          	
+			      	ng-model="cliente.nomRazaoSocial" ng-required="true" placeholder="Informe seu nome ou razão social">
+			    </div>
+
+			    <div class="form-group">		      		
+			      <label for="documentoCliente">CPF/CNPJ</label>
+			      <input id="documentoCliente" type="text" class="form-control" pattern="[0-9]+$" 
+			      	minlength="11" maxlength="14"  ng-model="cliente.documentoCliente" ng-required="true" 
+			      	placeholder="Informe apenas os números">
+			    </div>
+
+					<div class="form-group">
+			      <label for="telefone">Telefone</label>
+			      <input id="telefone" type="text" class="form-control" pattern="\(\d{2}\)\d{4}-\d{4}"
+			      	title="Formato válido (##)####-####" ng-model="cliente.telefone" ng-required="true"
+			      	placeholder="Informe no formato (##)####-####">
+			    </div>
+			 
+					<div class="form-group">
+			      <label for="email">E-mail</label>
+			      <input id="email" type="email" class="form-control" 
+			      	ng-model="cliente.email" ng-required="true"
+			      	placeholder="Informe seu e-mail">
+			    </div>
+
+			    <button id="resetCliente" type="button" class="btn btn-default" ng-click="cancelar()" >Cancelar</button>    
+			   	<button type="button" class="btn btn-primary" ng-disabled="clienteForm.$invalid"
+			   		ng-click="inserir(cliente)" ng-hide="escondeAdicionar">
+			   		Adicionar
+			    </button>
+			    <button type="button" class="btn btn-primary" ng-disabled="clienteForm.$invalid"
+			    	ng-click="alterar(cliente)" ng-hide="!escondeAdicionar">
+			   		Alterar
+			    </button>
+				</form>
+			</div>
+		</div>	
+	<table class="table table-bordered " ng-init="buscaTodos()">
+		<thead>
+			<th>Nome/Razão Social</th>
+			<th>CPF/CNPJ</th>				
+			<th>Email</th>
+			<th>Telefone</th>
+			<th>Ações</th>
+		</thead>
+		<tbody>
+			<tr ng-repeat="cliente in clientes">
+				<td>{{ cliente.nomRazaoSocial }}</td>
+				<td>{{ cliente.documentoCliente }}</td>
+				<td>{{ cliente.email }}</td>
+				<td>{{ cliente.telefone }}</td>
+				<td>
+					<button class="btn" ng-click="carregarFormulario(cliente.documentoCliente)" >
+						Editar
+					</button>
+					<button class="btn" ng-click="excluir(cliente.documentoCliente)">
+						Excluir
+					</button>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>

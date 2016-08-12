@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pr-bt" ng-app="pedidos_app">
+<head>
+	<meta charset="utf-8">
+	<title>Pedidos Contabilizei</title>
+	<link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="node_modules/bootstrap-select/dist/css/bootstrap-select.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/index.css">
+	<style type="text/css">
+		select.bs-select-hidden,
+		select.selectpicker {
+  		display: block !important;
+		}
+	</style>
+</head>
+<body>		
+	<div class="container">		
+		<div class="col-md-8">
+			<header>
+				<nav>
+					<ul class="nav nav-tabs">
+		        <li role="presentation"><a class="tab-section active" href="#">Pedidos</a></li>
+		        <li role="presentation"><a class="tab-section" href="#">Clientes</a></li>
+		       	<li role="presentation"><a class="tab-section" href="#">Produtos</a></li>
+		      </ul>
+				</nav>
+			</header>		
+			<br>
+		
+			<div ng-include="'views/pedidos/listar.html'"></div>
+			<div ng-include="'views/clientes/listar.html'"></div>
+			<div ng-include="'views/produtos/listar.html'"></div>
+		</div>
+	</div>
+
+	<script src="node_modules/angular/angular.js"></script>
+	<script src="node_modules/jquery/dist/jquery.js"></script>
+	<script src="node_modules/bootstrap/dist/js/bootstrap.js"></script>
+	<script src="node_modules/bootstrap-select/dist/js/bootstrap-select.js"></script>
+
+	<script src="app/app.js"></script>
+	
+	<script src="app/services/pedidos_service.js"></script>
+	<script src="app/controllers/pedidos_controller.js"></script>
+
+	<script src="app/services/produtos_service.js"></script>
+	<script src="app/controllers/produtos_controller.js"></script>
+
+	<script src="app/services/clientes_service.js"></script>
+	<script src="app/controllers/clientes_controller.js"></script>
+
+	<script src="assets/js/index.js"></script>
+</body>
+</html>
