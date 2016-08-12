@@ -15,7 +15,7 @@
 
       		<div class="form-group">
             <label for="nomeCliente">Cliente</label>
-            <select name="nomeCliente" class="form-control selectpicker" ng-model="pedido.documentoCliente"
+            <select name="nomeCliente" class="form-control" ng-model="pedido.documentoCliente"
               ng-options="c.documentoCliente as c.nomRazaoSocial for c in clientes" >
               <option value="">Selecione um Cliente</option>
             </select>
@@ -23,7 +23,7 @@
 
           <div class="form-group">              
             <label for="produto">Produtos</label>
-            <select name="produtoCodigo" class="form-control selectpicker" required
+            <select name="produtoCodigo" class="form-control" required
               ng-model="pedido.codigo" ng-options="p.descricao for p in produtos track by p.codigo">
               <option value="">Selecione um Produto</option>
             </select>
