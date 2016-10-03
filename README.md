@@ -80,14 +80,21 @@ Escolha umas das opções abaixo para implementar sua solução. A modelagem dos
 
 * Aplicação pura Java EE (não utilize Spring, Struts, EJB, etc)
 * RESTful API JAX-RS utilizando Servlets ou framework Jersey
-* Banco de dados SQL (MySQL, PostgreSQL, HSQLDB) com JPA ou NOSQL(MongoDB, Cassandra)
+* Banco de dados SQL (MySQL, PostgreSQL, HSQLDB) com JPA ou NOSQL(MongoDB)
+
+**Recomendações:**
+
+* Não utilize frameworks ou BD que não foram indicados
+* Para servidor de aplicação utilize Jetty ou Tomcat (Não utilize: JBOSS, Wildfly ou qualquer outro servidor. Por quê? Critério de facilidade de configuração)
+* Utilize o Maven para gerenciamento de dependências
 
 #### Front-end
 
 * Single Page Application utilizando apenas HTML5 e CSS3 
 * Javascript puro / JQuery (e plugins)
-* AngularJS 1.x (será diferencial)
+* AngularJS 1.x
 * Bootstrap (http://getbootstrap.com/) ou Angular Material Design (será diferencial)
+* Utilizar automatizadores como Bower, Gulp, Grant é opcional.
 
 ### Arquitetura e documentação
 
