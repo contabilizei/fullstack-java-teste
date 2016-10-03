@@ -3,32 +3,32 @@
   <head>
     <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/github-dark.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
 
     <title>Fullstack-java-teste by contabilizei</title>
   </head>
 
   <body>
-
     <header>
-      <div class="container">
+      <div class="inner">
         <h1>Fullstack-java-teste</h1>
         <h2>Desafio prático para desenvolvedores Full Stack Java que querem entrar para nosso time de ninjas :)</h2>
-
-        <section id="downloads">
-          <a href="https://github.com/contabilizei/fullstack-java-teste/zipball/master" class="btn">Download as .zip</a>
-          <a href="https://github.com/contabilizei/fullstack-java-teste/tarball/master" class="btn">Download as .tar.gz</a>
-          <a href="https://github.com/contabilizei/fullstack-java-teste" class="btn btn-github"><span class="icon"></span>View on GitHub</a>
-        </section>
+        <a href="https://github.com/contabilizei/fullstack-java-teste" class="button"><small>View project on</small> GitHub</a>
       </div>
     </header>
 
-    <div class="container">
-      <section id="main_content">
-        <h1>
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
+          <h1>
 <a id="por-que-trabalhar-na-contabilizei" class="anchor" href="#por-que-trabalhar-na-contabilizei" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Por que trabalhar na Contabilizei</h1>
 
 <p><strong>Eleita a melhor startup B2B da América Latina em 2016, a Contabilizei</strong> é um escritório de contabilidade online, líder de mercado, com sede em Curitiba (PR). Nosso propósito é resolver a dor e burocracia de micro e pequenas empresas ao se manterem regulares com o governo. Somos contadores, só que online, simples assim. Acreditamos no poder da tecnologia para melhorar continuamente a vida das pessoas. </p>
@@ -119,7 +119,7 @@
 <p>Escolha umas das opções abaixo para implementar sua solução. A modelagem dos dados fica a seu critério. Não se preocupe com autenticação ou multitenancy.</p>
 
 <h4>
-<a id="back-end" class="anchor" href="#back-end" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Back-end</h4>
+<a id="back-end" class="anchor" href="#back-end" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>BACK-END</h4>
 
 <p><strong>Opção 1</strong></p>
 
@@ -134,22 +134,29 @@
 <p><strong>Opção 2</strong></p>
 
 <ul>
-<li>Aplicação pura JavaEE </li>
+<li>Aplicação pura Java EE (não utilize Spring, Struts, EJB, etc)</li>
 <li>RESTful API JAX-RS utilizando Servlets ou framework Jersey</li>
-<li>Banco de dados SQL (MySQL, PostgreSQL, HSQLDB) ou NOSQL(MongoDB, Cassandra)</li>
+<li>Banco de dados SQL (MySQL, PostgreSQL, HSQLDB) com JPA ou NOSQL(MongoDB)</li>
 </ul>
 
 <h4>
-<a id="front-end" class="anchor" href="#front-end" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Front-end</h4>
+<a id="front-end" class="anchor" href="#front-end" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>FRONT-END</h4>
 
 <ul>
 <li>Single Page Application utilizando apenas HTML5 e CSS3 </li>
 <li>Javascript puro / JQuery (e plugins)</li>
-<li>Bootstrap (<a href="http://getbootstrap.com/">http://getbootstrap.com/</a>)</li>
-<li>AngularJS 1.x e Angular Material Design (estes são opcionais e são diferenciais)</li>
+<li>AngularJS 1.x</li>
+<li>Bootstrap (<a href="http://getbootstrap.com/">http://getbootstrap.com/</a>) ou Angular Material Design (será diferencial)</li>
 </ul>
 
-<p><strong>Atenção:</strong> não utilize frameworks ou tecnologias não mencionados acima.</p>
+<p><strong>Recomendações gerais:</strong></p>
+
+<ul>
+<li>Não utilize frameworks ou BD que não foram indicados</li>
+<li>Para servidor de aplicação utilize Jetty ou Tomcat (Não utilize: JBOSS, Wildfly ou qualquer outro servidor. Por quê? Critério de facilidade de configuração)</li>
+<li>Utilize o Maven para gerenciamento de dependências</li>
+<li>Utilizar automatizadores como Bower, Gulp, Grant é opcional.</li>
+</ul>
 
 <h3>
 <a id="arquitetura-e-documentação" class="anchor" href="#arquitetura-e-documenta%C3%A7%C3%A3o" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Arquitetura e documentação</h3>
@@ -175,10 +182,26 @@
 <h1>
 <a id="sobre-você" class="anchor" href="#sobre-voc%C3%AA" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Sobre você</h1>
 
-<p>Queremos saber um pouco mais sobre você também :) Por favor, responda o questionário do arquivo <a href="https://github.com/contabilizei/fullstack-java-teste/blob/master/questions.md">questions.md</a> e envie junto com seu projeto.</p>
-      </section>
+<p>Queremos saber um pouco mais sobre você também :) Por favor, responda o questionário do arquivo <a href="questions.md">questions.md</a> e envie junto com seu projeto.</p>
+        </section>
+
+        <aside id="sidebar">
+          <a href="https://github.com/contabilizei/fullstack-java-teste/zipball/master" class="button">
+            <small>Download</small>
+            .zip file
+          </a>
+          <a href="https://github.com/contabilizei/fullstack-java-teste/tarball/master" class="button">
+            <small>Download</small>
+            .tar.gz file
+          </a>
+
+          <p class="repo-owner"><a href="https://github.com/contabilizei/fullstack-java-teste"></a> is maintained by <a href="https://github.com/contabilizei">contabilizei</a>.</p>
+
+          <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
+        </aside>
+      </div>
     </div>
 
-    
+  
   </body>
 </html>
