@@ -68,7 +68,7 @@ No pedido, deve constar as seguintes informações do cliente:
 
 Escolha umas das opções abaixo para implementar sua solução. A modelagem dos dados fica a seu critério. Não se preocupe com autenticação ou multitenancy.
 
-#### Back-end
+#### BACK-END
 
 **Opção 1**
 
@@ -82,7 +82,7 @@ Escolha umas das opções abaixo para implementar sua solução. A modelagem dos
 * RESTful API JAX-RS utilizando Servlets ou framework Jersey
 * Banco de dados SQL (MySQL, PostgreSQL, HSQLDB) com JPA ou NOSQL(MongoDB)
 
-#### Front-end
+#### FRONT-END
 
 * Single Page Application utilizando apenas HTML5 e CSS3 
 * Javascript puro / JQuery (e plugins)
