@@ -13,10 +13,10 @@ import javax.ws.rs.core.Response;
 
 import com.contabilizei.teste.customer.controller.CustomerController;
 import com.contabilizei.teste.customer.model.Customer;
-import com.contabilizei.teste.rest.RestResponse;
+import com.contabilizei.teste.rest.AbstractRest;
 
 @Path("/customers")
-public class CustomerRest {
+public class CustomerRest extends AbstractRest{
 	
 	private CustomerController controller = new CustomerController();
 	
@@ -24,21 +24,22 @@ public class CustomerRest {
 	@Path("/getCustomer/{customer}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response getCustomer(@PathParam("customer") Integer id ){
-		return Response.ok(new RestResponse(this.controller.findById(id))).build(); 
+		return buildResponse(this.controller.findById(id)); 
 	}
 	
 	@GET
 	@Path("/getAllCustomers")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response getAllCustomers(){
-		return Response.ok(new RestResponse(this.controller.findAll())).build(); 
+		return buildResponse(this.controller.findAll()); 
 	}
 	
 	@POST
+	@Produces(MediaType.TEXT_PLAIN)
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response save(Customer customer){
 		this.controller.create(customer);
-		return Response.ok("Contato salvo com sucesso").type(MediaType.TEXT_PLAIN).build();
+		return buildResponse("Contato salvo com sucesso");
 	}
 	
 	@PUT
@@ -46,14 +47,14 @@ public class CustomerRest {
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response update(Customer customer){
 		Customer customerReturn = this.controller.update(customer);
-		return Response.ok(customerReturn.getName() + " atualizado!").build();
+		return buildResponse(customerReturn.getName() + " atualizado!");
 	}
 	
 	@DELETE
 	@Path("/deleteCustomer/{id}")
 	public Response delete (@PathParam("id") int id){
 		this.controller.delete(id);
-		return Response.ok("Cliente Excluido").build();
+		return buildResponse("Cliente Excluido");
 		
 	}
 

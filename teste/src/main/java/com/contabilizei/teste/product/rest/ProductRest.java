@@ -13,10 +13,10 @@ import javax.ws.rs.core.Response;
 
 import com.contabilizei.teste.product.controller.ProductController;
 import com.contabilizei.teste.product.model.Product;
-import com.contabilizei.teste.rest.RestResponse;
+import com.contabilizei.teste.rest.AbstractRest;
 
 @Path("/products")
-public class ProductRest {
+public class ProductRest extends AbstractRest{
 	
 	private ProductController controller = new ProductController();
 	
@@ -24,14 +24,14 @@ public class ProductRest {
 	@Path("/getProduct/{product}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response getProduct(@PathParam("product") Integer id ){
-		return Response.ok(new RestResponse(this.controller.findById(id))).build(); 
+		return buildResponse(this.controller.findById(id)); 
 	}
 	
 	@GET
 	@Path("/getAllProducts")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response getAllProduct(){
-		return Response.ok(new RestResponse(this.controller.findAll())).build(); 
+		return buildResponse(this.controller.findAll()); 
 	}
 	
 	@POST

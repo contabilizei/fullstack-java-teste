@@ -15,7 +15,6 @@ import com.contabilizei.teste.order.model.Order;
 import com.contabilizei.teste.ordercontroller.OrderController;
 import com.contabilizei.teste.orderitem.controller.OrderItemController;
 import com.contabilizei.teste.rest.AbstractRest;
-import com.contabilizei.teste.rest.RestResponse;
 
 @Path("/orders")
 public class OrderRest extends AbstractRest {
@@ -27,7 +26,7 @@ public class OrderRest extends AbstractRest {
 	@Path("/getOrder/{order}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response getOrder(@PathParam("order") Integer id ){
-		return Response.ok(new RestResponse(this.controller.findById(id))).build(); 
+		return buildResponse(this.controller.findById(id)); 
 	}
 	
 	@GET
