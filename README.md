@@ -68,7 +68,7 @@ No pedido, deve constar as seguintes informações do cliente:
 
 Escolha umas das opções abaixo para implementar sua solução. A modelagem dos dados fica a seu critério. Não se preocupe com autenticação ou multitenancy.
 
-#### Back-end
+#### BACK-END
 
 **Opção 1**
 
@@ -80,14 +80,21 @@ Escolha umas das opções abaixo para implementar sua solução. A modelagem dos
 
 * Aplicação pura Java EE (não utilize Spring, Struts, EJB, etc)
 * RESTful API JAX-RS utilizando Servlets ou framework Jersey
-* Banco de dados SQL (MySQL, PostgreSQL, HSQLDB) com JPA ou NOSQL(MongoDB, Cassandra)
+* Banco de dados SQL (MySQL, PostgreSQL, HSQLDB) com JPA ou NOSQL(MongoDB)
 
-#### Front-end
+#### FRONT-END
 
 * Single Page Application utilizando apenas HTML5 e CSS3 
 * Javascript puro / JQuery (e plugins)
-* AngularJS 1.x (será diferencial)
+* AngularJS 1.x
 * Bootstrap (http://getbootstrap.com/) ou Angular Material Design (será diferencial)
+
+**Recomendações gerais:**
+
+* Não utilize frameworks ou BD que não foram indicados
+* Para servidor de aplicação utilize Jetty ou Tomcat (Não utilize: JBOSS, Wildfly ou qualquer outro servidor. Por quê? Critério de facilidade de configuração)
+* Utilize o Maven para gerenciamento de dependências
+* Utilizar automatizadores como Bower, Gulp, Grant é opcional.
 
 ### Arquitetura e documentação
 
