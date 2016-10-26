@@ -35,7 +35,7 @@
 
 <p>Se você tem espírito e comportamento empreendedor, muita disposição e proatividade para trabalhar em uma empresa em franca expansão, você é um forte candidato :)</p>
 
-<p>Como Desenvolvedor Front-end você irá trabalhar juntamente com uma excelente equipe de desenvolvedores ninja, tendo foco na criação produtos que garantam a melhor experiência para nossos usuários.</p>
+<p>Como Desenvolvedor Full-stack você irá atuar no desenvolvimento de soluções em arquitetura Java Web MVC com RestFul APis (JAX-RS), integrações com outros sistemas (SOAP, XML, JSON), banco de dados NoSQL e soluções escaláveis, participando de todo o processo de desenvolvimento, desde tomadas de decisões à codificação e testes.</p>
 
 <h3>
 <a id="o-que-fazem-os-ninjas-da-contabilizei-o-que-comem-e-bebem-onde-vivem" class="anchor" href="#o-que-fazem-os-ninjas-da-contabilizei-o-que-comem-e-bebem-onde-vivem" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>O que fazem os Ninjas da Contabilizei? O que comem (e bebem)? Onde vivem?</h3>
@@ -75,43 +75,174 @@
 </ul>
 
 <h1>
-<a id="o-desafio-crud-de-pedidos" class="anchor" href="#o-desafio-crud-de-pedidos" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>O desafio (CRUD de pedidos)</h1>
+<a id="o-desafio-de-notas-fiscais-e-cálculo-de-impostos" class="anchor" href="#o-desafio-de-notas-fiscais-e-c%C3%A1lculo-de-impostos" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>O Desafio de Notas Fiscais e Cálculo de Impostos</h1>
 
-<p>Você deverá criar 2 aplicações para cadastramento de pedidos de venda: </p>
+<p>Você deverá criar 2 aplicações para cadastramento de notas fiscais e cálculo de impostos:</p>
 
 <p><strong>Back-end:</strong> aplicação JavaEE baseada em Web Services no padrão RESTful JAX-RS.</p>
 
-<p><strong>Front-end:</strong> Single Page Application que se comunique com estes serviços. </p>
+<p><strong>Front-end:</strong> Single Page Application que se comunique com estes serviços.</p>
 
-<p>A aplicação Back-end dever ter, ao menos, serviços para: inclusão, alteração, exclusão e listagem dos pedidos.</p>
-
-<p>Pedidos deverão conter: </p>
+<p><strong>Requisitos:</strong></p>
 
 <ul>
-<li>número</li>
-<li>data de emissão</li>
-<li>cliente</li>
-<li>lista de produtos</li>
-<li>valor total</li>
+<li>Permitir o cadastro de clientes (empresas)</li>
+<li>Permitir o registro de notas fiscais emitidas</li>
+<li>Realizar o cálculo dos impostos devidos por mês e ano de referência</li>
+<li>Permitir a consulta de notas fiscais e impostos por mês e ano de referência</li>
+<li>Permitir marcar o imposto como PAGO</li>
 </ul>
 
-<p>Cada produto do pedido deve ter: </p>
+<p>O cadastro do cliente da Contabilizei deve conter as seguintes informações:</p>
 
 <ul>
-<li>código</li>
-<li>descrição</li>
-<li>quantidade</li>
-<li>valor unitário</li>
+<li>Razão Social</li>
+<li>CNPJ</li>
+<li>Regime Tributário (Simples Nacional ou Lucro Presumido)</li>
+<li>Anexos (no caso de Regime Simples Nacional)</li>
+<li>E-mail</li>
 </ul>
 
-<p>No pedido, deve constar as seguintes informações do cliente: </p>
+<p>O cliente da Contabilizei deve registrar as notas fiscais para que seus impostos sejam calculados mensalmente. </p>
+
+<p>As Notas Fiscais contém as seguintes informações:</p>
 
 <ul>
-<li>cpf ou cnpj</li>
-<li>nome ou razão social</li>
-<li>telefone</li>
-<li>e-mail</li>
+<li>Numero da Nota fiscal</li>
+<li>Data de emissão</li>
+<li>Descrição (Apenas texto. Pode ser um serviço prestado, um produto vendido ou produzido)</li>
+<li>Valor</li>
+<li>Anexo (1,2,3)</li>
 </ul>
+
+<p>Quando o cliente terminar de lançar suas notas fiscais, ele poderá solicitar o cálculo de seus impostos do mês. O impostos deverão ter as seguintes informações:</p>
+
+<ul>
+<li>Tipo de Imposto (Simples Nacional, Imposto de Renda, ISS, Cofins)</li>
+<li>Vencimento</li>
+<li>Valor</li>
+<li>Mês e ano de referência (por exemplo, 10/2016)</li>
+<li>Pago ou não</li>
+</ul>
+
+<p><strong>Regras para o cálculo dos impostos:</strong></p>
+
+<ul>
+<li>Se a empresa for do Simples Nacional, somente o imposto Simples Nacional é calculado. Para isso, somam-se as notas fiscais do mês por anexo e aplicam-se, para cada anexo as alíquotas conforme a tabela abaixo e criamos esse imposto.</li>
+</ul>
+
+<table>
+<thead>
+<tr>
+<th>Anexo</th>
+<th align="left">Alíquota de imposto</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1 - Comércio</td>
+<td align="left">6%</td>
+</tr>
+<tr>
+<td>2 - Indústria</td>
+<td align="left">8,5%</td>
+</tr>
+<tr>
+<td>3 - Prestação de serviços</td>
+<td align="left">11%</td>
+</tr>
+</tbody>
+</table>
+
+<p>Exemplo:</p>
+
+<table>
+<thead>
+<tr>
+<th>Número da nota</th>
+<th align="left">Valor</th>
+<th align="left">Anexo</th>
+<th align="left">Valor x Alíquota</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>001</td>
+<td align="left">1.000,00</td>
+<td align="left">1</td>
+<td align="left">60,00</td>
+</tr>
+<tr>
+<td>002</td>
+<td align="left">5.000,00</td>
+<td align="left">3</td>
+<td align="left">550,00</td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>Total Imposto Simples Nacional = R$ R$ 610,00</strong></p>
+
+<ul>
+<li>Se a empresa for do Lucro Presumido, será necessário calcular o IRPJ, o ISS e o Cofins. Então, desconsideramos o anexo, somamos todas as notas fiscais do mês, aplicamos as alíquotas abaixo e criamos os impostos (IRPJ, ISS e Cofins).</li>
+</ul>
+
+<table>
+<thead>
+<tr>
+<th>Tipo do imposto</th>
+<th align="left">Alíquota de imposto</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>IRPJ</td>
+<td align="left">4,8%</td>
+</tr>
+<tr>
+<td>ISS</td>
+<td align="left">2%</td>
+</tr>
+<tr>
+<td>COFINS</td>
+<td align="left">3%</td>
+</tr>
+</tbody>
+</table>
+
+<p>Exemplo:</p>
+
+<table>
+<thead>
+<tr>
+<th>Número da nota</th>
+<th align="left">Valor</th>
+<th align="left">IRPJ</th>
+<th align="left">ISS</th>
+<th align="left">COFINS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>001</td>
+<td align="left">1.000,00</td>
+<td align="left">48,00</td>
+<td align="left">20,00</td>
+<td align="left">30,00</td>
+</tr>
+<tr>
+<td>002</td>
+<td align="left">500,00</td>
+<td align="left">24,00</td>
+<td align="left">10,00</td>
+<td align="left">15,00</td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>Total de impostos Lucro Presumido: IRPJ R$ 72,00, ISS R$ 30,00, COFINS R$ 45,00</strong></p>
+
+<p>Após o cálculo dos impostos, o cliente ainda poderá consultar quais impostos está devendo por mês e marcar os impostos pagos.</p>
 
 <h3>
 <a id="tecnologias" class="anchor" href="#tecnologias" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Tecnologias</h3>
