@@ -69,7 +69,7 @@ As Notas Fiscais contém as seguintes informações:
 * Valor
 * Anexo (1,2,3)
 
-Quando o cliente terminar de lançar suas notas fiscais, ele poderá solicitar o cálculo de seus impostos do mês. O impostos deverão ter as seguintes informações:
+Quando o cliente terminar de lançar suas notas fiscais, ele poderá solicitar o cálculo de seus impostos do mês. Cada mês deverá ter apenas 1 imposto de cada tipo. Os impostos deverão ter as seguintes informações:
 
 * Tipo de Imposto (Simples Nacional, Imposto de Renda, ISS, Cofins)
 * Vencimento
@@ -94,7 +94,9 @@ Exemplo:
 | 001            | 1.000,00   | 1     | 60,00            |
 | 002            | 5.000,00   | 3     | 550,00           |
 
-**Total Imposto Simples Nacional = R$ R$ 610,00**
+**Total Imposto Simples Nacional = R$ 610,00**
+
+Neste caso, será gerado 1 imposto do Tipo Simples Nacional cujo valor será R$ 610,00
 
 - Se a empresa for do Lucro Presumido, será necessário calcular o IRPJ, o ISS e o Cofins. Então, desconsideramos o anexo, somamos todas as notas fiscais do mês, aplicamos as alíquotas abaixo e criamos os impostos (IRPJ, ISS e Cofins).
 
@@ -112,6 +114,9 @@ Exemplo:
 | 002            | 500,00     | 24,00     | 10,00  |15,00       |
 
 **Total de impostos Lucro Presumido: IRPJ R$ 72,00, ISS R$ 30,00, COFINS R$ 45,00**
+
+Neste caso, serão gerados 3 impostos (IR, ISS e Cofins) cujos valores serão (R$ 72, R$ 30 e R$ 45)
+
 
 Após o cálculo dos impostos, o cliente ainda poderá consultar quais impostos está devendo por mês e marcar os impostos pagos.
 
