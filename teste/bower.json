@@ -1,0 +1,22 @@
+{
+  "name": "teste",
+  "homepage": "https://github.com/marcioowc/test",
+  "authors": [
+    "Marcio Wallace Cavalcanti <marcio.wcavalcanti@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "src/main/webapp/js/lib",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.5.8",
+    "bootstrap": "^3.3.7"
+  }
+}

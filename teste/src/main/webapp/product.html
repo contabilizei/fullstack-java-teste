@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html ng-app="myapp">
+<head>
+<meta charset="ISO-8859-1">
+<title>Produto</title>
+<link rel="stylesheet" type="text/css" href="js/lib/bootstrap/dist/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="js/lib/bootstrap/dist/css/bootstrap-theme.min.css">
+<script type="text/javascript" src="js/lib/angular/angular.min.js"></script>
+</head>
+<body ng-controller="productController">
+	<div id="dvTable" all>
+		<table class="table">
+			<tr>
+				<th>ID</th>
+				<th>Nome</th>
+				<th>Preço</th>
+				<th></th>
+			</tr>
+			<tr ng-repeat="product in result">
+				<td>{{product.id}}</td>
+				<td>{{product.name}}</td>
+				<td>{{product.price}}</td>
+				<td>
+					<a href="#" ng-click="del(product.id)">Delete</a>
+					<a href="#" ng-click="edit(product)">Edit</a>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<br/>
+	<div id="dvInformation">
+		<fieldset>
+			<legend>Informações do Produto</legend>
+			<div class="fomr-group col-sm-4">
+			
+			<label class="control-label" for="tiName">Nome</label>
+			<input id="tiName" type="text" ng-model="product.name" class="form-control">
+			
+			<br>
+			
+			<label class="control-label" for="tiPrice">Preço</label>
+			<input id="tiPrice" type="text" ng-model="product.price" class="form-control">
+			
+			<br>
+			
+			<td>
+				<input type="button" value="Adicionar" ng-click="add()">
+				<input type="button" value="Atualizar" ng-click="update()">
+			</td>
+			
+		</fieldset>
+	</div>
+	<br>
+	<form method="link" action="index.html">
+		<input type="submit" value="Voltar">
+	</form>
+	<script type="text/javascript">
+		var myapp = angular.module('myapp', []);
+		myapp.controller('productController', function($scope, $http){
+			$scope.base_url = 'http://localhost:8080/teste/rest/products/';
+			$http.get($scope.base_url + 'getAllProducts').success(function(response){
+				$scope.result = response.data;
+			});
+
+			$scope.add = function(){
+				$http.post($scope.base_url, $scope.product).success(function(response){
+					$http.get($scope.base_url + 'getAllProducts').success(function(response){
+						$scope.result = response.data;
+					});
+				});
+			};
+
+			$scope.del = function(id){
+				var result = confirm('Tem certeza que deseja deletar o registro?');
+				if(result == true){
+					$http.delete($scope.base_url + 'deleteProduct/' + id).success(function(response){
+						$http.get($scope.base_url + 'getAllProducts').success(function(response){
+							$scope.result = response.data;
+						});
+					});
+				}				
+			};
+
+			$scope.edit = function(product){
+				$scope.product = product;
+				
+			};
+
+			$scope.update = function(){
+				$http.put($scope.base_url, $scope.product).success(function(response){
+					$http.get($scope.base_url + 'getAllProducts').success(function(response){
+						$scope.result = response.data;
+					});
+				});
+			};
+		});
+	</script>
+
+</body>
+</html>
