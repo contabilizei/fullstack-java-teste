@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html ng-app="myapp">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="js/lib/bootstrap/dist/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="js/lib/bootstrap/dist/css/bootstrap-theme.min.css">
+<script type="text/javascript" src="js/lib/angular/angular.min.js"></script>
+
+</head>
+<body ng-controller="customerController">
+
+	<legend>Clientes</legend>
+
+	<div id=dvTable all>
+		<table class="table">
+				<tr>
+					<th>ID</th>
+					<th>CPF/CNPJ</th>
+					<th>Nome</th>
+					<th></th>
+				</tr>
+				<tr ng-repeat="customer in result">
+					<td>{{customer.id}}</td>
+					<td>{{customer.idFederac}}</td>
+					<td>{{customer.name}}</td>
+					<td>
+						<a href="#" ng-click="del(customer.id)">Delete</a>
+						<a href="#" ng-click="edit(customer)">Edit</a>
+					</td>
+				</tr>
+		</table>
+	</div>
+	<br/>
+	<div id="dvInformation">
+		<fieldset>
+			<legend>Informações do Cliente</legend>
+			<div class="fomr-group col-sm-4">
+				<label class="control-label" for="tiIdFederac">CPF/CNPJ</label>
+				<input id="tiIdFederac" type="text" ng-model="customer.idFederac" class="form-control">
+				
+				<br>
+				
+				<label class="control-label" for="tiName">Nome</label>
+				<input id="tiName" type="text" ng-model="customer.name" class="form-control">
+				
+				<br>
+				<td>
+					<input type="button" value="Adicionar" ng-click="add()">
+					<input type="button" value="Atualizar" ng-click="update()">
+				</td>
+				
+			</div>
+		</fieldset>
+	</div>
+	<br>
+	<form method="link" action="index.html">
+		<input type="submit" value="Voltar">
+	</form>
+	<script type="text/javascript">
+		var myapp = angular.module('myapp', []);
+			myapp.controller('customerController', function($scope, $http){
+			$scope.base_url = 'http://localhost:8080/teste/rest/customers/';
+			$http.get($scope.base_url + 'getAllCustomers').success(function(response){
+				$scope.result = response.data;
+			});
+
+			$scope.add = function(){
+				$http.post($scope.base_url, $scope.customer).success(function(response){
+					$http.get($scope.base_url + 'getAllCustomers').success(function(response){
+						$scope.result = response.data;
+					});
+				});
+			};
+
+			$scope.del = function(id){
+				var result = confirm('Tem certeza que deseja deletar o registro?');
+				if(result == true){
+					$http.delete($scope.base_url + 'deleteCustomer/' + id).success(function(response){
+						$http.get($scope.base_url + 'getAllCustomers').success(function(response){
+							$scope.result = response.data;
+						});
+					});
+				}				
+			};
+
+			$scope.edit = function(customer){
+				$scope.customer = customer;
+				
+			};
+
+			$scope.update = function(){
+				$http.put($scope.base_url, $scope.customer).success(function(response){
+					$http.get($scope.base_url + 'getAllCustomers').success(function(response){
+						$scope.result = response.data;
+					});
+				});
+			};
+		});
+	</script>
+
+</body>
+</html>
