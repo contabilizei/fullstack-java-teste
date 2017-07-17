@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: desafio1
+Bundle-SymbolicName: desafio1
+Bundle-Version: 1.0.0.qualifier
+Export-Package: br.com.entidades,
+ br.com.manager,
+ br.com.service

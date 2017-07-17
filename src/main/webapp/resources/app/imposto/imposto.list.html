@@ -1,0 +1,120 @@
+<h1 class="page-header no-margin">Impostos</h1>
+<div class="panel-heading">
+	<div class="row">
+		<div class="col-lg-6">
+			<a class="btn btn-primary" ui-sref="createImposto"> Novo Imposto
+			</a>
+		</div>
+		<div class="col-lg-6">
+			<div class="input-group input-group-sm col-lg-12 pull-right">
+				<input type="text" class="form-control"
+					uib-datepicker-popup="MM/yyyy" ng-model="vm.impostoPesquisa.mesAnoRef"
+					is-open="vm.popup1.opened" datepicker-options="vm.dateOptions"
+					close-text="Close" /> <span class="input-group-btn"
+					datepicker-options="{minMode: 'month'}" datepicker-mode="'month'">
+					<button type="button" class="btn btn-default" ng-click="vm.open1()">
+						<i class="glyphicon glyphicon-calendar"></i>
+					</button>
+				</span> <input type="text" class="form-control" placeholder="Usuario"
+					ng-model="vm.impostoPesquisa.usuario">
+				<div class="input-group-btn">
+					<button class="btn btn-default" type="submit"
+						ng-click="vm.pesquisarImposto()">
+						<i class="glyphicon glyphicon-search"></i>
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>
+<div st-table="usuarios" class="table table-striped">
+	<table class="table table-striped table-hover table-condense">
+		<thead>
+			<tr>
+				<th>Usuario ID</th>
+				<th>Tipo Imposto</th>
+				<th>Mes e Ano</th>
+				<th>Valor</th>
+				<th>Pago</th>
+				<th class="text-center">Acoes</th>
+			</tr>
+		<thead>
+		<tbody>
+			<tr
+				dir-paginate="imposto in vm.impostos|orderBy:['mesAnoRef']:true | itemsPerPage: 10">
+				<td>{{ imposto.usuario }}</td>
+				<td>{{ imposto.tipoImposto }}</td>
+				<td>{{ imposto.mesAnoRef | date :  "dd/MM/y" }}</td>
+				<td>{{ imposto.valor }}</td>
+				<td>{{ imposto.pgOuNao }}</td>
+
+				<td><a class="btn btn-default" ng-click="vm.showMP(imposto)">Marcar
+						Pago</a></td>
+				<td><a class="btn btn-danger" ng-click="vm.show(imposto)">Excluir</a></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+</div>
+<div class="text-center">
+	<dir-pagination-controls max-size="10" direction-links="true"
+		boundary-links="true" />
+</div>
+<script type="text/ng-template" id="modalPago.html">
+	<div class="modal-header">
+		<h4 class="modal-title" id="modal-title">Confirmar Imposto como Pago</h4>
+	</div>
+	<div class="modal-body" id="modal-body">
+		<div class="row">
+			<div class="col-md-3">
+				<div class="form-group">
+					<label class="form-control-static">Imposto</label>
+				</div>
+			</div>
+
+			<div class="col-md-3">
+				<div class="form-group">
+					<p class="form-control-static">{{vm.impostoSelecionada.tipoImposto}}</p>
+				</div>
+			</div>
+		</div>
+
+
+		<div class="form-horizontal"></div>
+		<div class="modal-footer"></div>
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-default" ng-click="vm.marcarPago()">Confirmar</button>
+		<button type="button" class="btn btn-default" ng-click="vm.close()">Fechar</button>
+	</div>
+	</script>
+<script type="text/ng-template" id="modal.html">
+	<div class="modal-header">
+		<h4 class="modal-title" id="modal-title">Confirmacao de exclusão
+			da Usuario</h4>
+	</div>
+	<div class="modal-body" id="modal-body">
+		<div class="row">
+			<div class="col-md-3">
+				<div class="form-group">
+					<label class="form-control-static">Nome da usuario</label>
+				</div>
+			</div>
+
+			<div class="col-md-3">
+				<div class="form-group">
+					<p class="form-control-static">{{vm.impostoSelecionada.tipoImposto}}</p>
+				</div>
+			</div>
+		</div>
+
+
+		<div class="form-horizontal"></div>
+		<div class="modal-footer"></div>
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-default" ng-click="vm.excluir()">Confirmar</button>
+		<button type="button" class="btn btn-default" ng-click="vm.close()">Fechar</button>
+	</div>
+	</script>

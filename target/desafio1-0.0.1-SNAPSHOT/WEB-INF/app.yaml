@@ -1,0 +1,7 @@
+runtime: java
+application: desafio1
+
+
+handlers:
+- url: /resources.*
+  script: this field is required, but ignored
