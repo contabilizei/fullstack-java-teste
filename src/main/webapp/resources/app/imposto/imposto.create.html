@@ -1,0 +1,119 @@
+<div class="row">
+	<div class="col-sm-12">
+		<h1 class="page-header no-margin">Imposto</h1>
+	</div>
+	<div class="col-sm-12">
+		<form class="form-horizontal form" ng-submit="vm.gerarImposto(form)" style="margin-top: 25px;" name="form" novalidate>
+			<div class="form-group">
+				<div class="col-md-12">
+					<label for="txtUsuario"
+						class="col-lg-2 col-form-label">Usuario</label>
+					<div class="col-lg-5">
+						<div class="input-group">
+							<input type="text" ng-model="vm.razaoSocial"
+								id="txtUsuario" disabled="disabled"
+								class="form-control" /> <span class="input-group-btn">
+								<button type="button"
+									class="btn btn-default glyphicon glyphicon-search"
+									style="top: 0px !important;"
+									ng-click="vm.showUsuario()"></button>
+							</span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="form-group"
+				ng-class="{ 'has-success': form.mesAnoRef.$valid && vm.submitted, 'has-error': form.mesAnoRef.$invalid && vm.submitted }">
+				<label for="usMesAnoRef" class="col-lg-2 col-form-label">Mes e Ano </label>
+				<div class="col-lg-5">
+					<p class="input-group">
+						<input type="text" class="form-control"
+							uib-datepicker-popup="MM/yyyy"
+							ng-model="vm.entity.mesAnoRef" is-open="vm.popup1.opened"
+							datepicker-options="vm.dateOptions" close-text="Close" /> 
+							<span class="input-group-btn"
+							datepicker-options="{minMode: 'month'}" datepicker-mode="'month'">
+							<button type="button" class="btn btn-default"
+								ng-click="vm.open1()">
+								<i class="glyphicon glyphicon-calendar"></i>
+							</button>
+						</span>
+					</p>
+					<p class="help-block"
+						ng-show="form.mesAnoRef.$error.required && vm.submitted">
+						Insira a Data da Emissao.</p>
+				</div>
+			</div>
+			
+			<div class="pull-right">
+				<button class="btn btn-success btn-lg" type="submit">Gerar Impostos</button>
+<!-- 				<a class="btn btn-danger btn-lg" ui-sref="vm.gerarImposto()"> Gerar </a> -->
+				<a class="btn btn-danger btn-lg" ui-sref="Imposto"> Cancelar </a>
+			</div>
+		</form>
+	</div>
+</div>
+
+<script type="text/ng-template" id="modalUsuario.html">
+<div class="modal-header">
+	<h4 class="modal-title" id="modal-title">Pesquisar Usuario</h4>
+</div>
+
+<div class="row" tabindex="-1" style="border: 0 none transparent">
+	<div class="col-sm-12">
+		<div id="message" class="message">
+			<div id="alerts" uib-alert ng-repeat="alert in alerts"
+			ng-class="'alert-' + (alert.type || 'warning')"
+			close="closeAlert($index)" dismiss-on-timeout="5000">{{alert.msg}}
+			</div>
+		</div>
+	</div>
+</div>
+<div class="modal-body" id="modal-body">
+	<div class="row">
+		
+		<div class="col-md-10">
+			<label for="txtCredor" class="col-lg-2 col-form-label">Usuario</label>
+			<div class="col-lg-10">
+				<input type="text" name="txtUsuario" class="form-control" ng-model="vm.usuarioE" required maxlength="50"/>
+			</div>
+		</div>
+
+		<div class="col-md-1">		
+			<span class="input-group-btn">
+	    		<button type="button" class="btn btn-default glyphicon glyphicon-search" ng-click="vm.pesquisarUsuarios()"></button>
+			</span>
+		</div>
+
+	</div>
+	<div class="row">
+		
+	<div st-table="credores" class="table table-striped" ng-if="vm.usuarios.length >0">
+			<table class="table table-striped table-hover table-condense">
+				<thead>
+					<tr>
+						<th>Nome</th>
+						<th></th>				
+					</tr>
+				</thead>
+					<tbody>
+						<tr dir-paginate="usuario in vm.usuarios|orderBy:['razaoSocial']:asc | itemsPerPage: 5">
+							<td>{{ usuario.id }}</td>
+							<td>{{ usuario.razaoSocial }}</td>
+							<td>{{ usuario.email }}</td>
+							<td class="text-center"><a class="btn btn-info" ng-click="vm.selecionarUsuario(usuario)">Selecionar</a>
+						</tr>
+					</tbody>
+			</table>
+			
+			<div class="text-center">
+				<dir-pagination-controls max-size="10" direction-links="true" boundary-links="true" auto-hide="true"/>
+			</div>
+	  </div>
+
+	</div>
+</div>
+<div class="modal-footer">
+	<button type="button" class="btn btn-default" ng-click="vm.closeModalUsuario()">Fechar</button>
+</div>
+</script>

@@ -1,0 +1,64 @@
+<h1 class="page-header no-margin">Nota Fiscal</h1>
+<div class="panel-heading">
+	<div class="row">
+		<div class="col-lg-6">
+			<a class="btn btn-primary" ui-sref="createNotaFiscal"> Nova NotaFiscal
+			</a>
+		</div>
+	</div>
+</div>
+<div st-table="usuarios" class="table table-striped">
+	<table class="table table-striped table-hover table-condense">
+		<thead>
+			<tr>
+				<th>Numero da Nota</th>
+				<th>Valor</th>
+				<th>Anexo</th>
+				<th class="text-center">Acoes</th>
+			</tr>
+		<thead>
+		<tbody>
+			<tr
+				dir-paginate="notafiscal in vm.notafiscais|orderBy:['razaoSocial']:true | itemsPerPage: 10">
+				<td>{{ notafiscal.nmrNotaFiscal }}</td>
+				<td>{{ notafiscal.valor }}</td>
+				<td>{{ notafiscal.anexo }}</td>
+				<td><a class="btn btn-danger" ng-click="vm.show(notafiscal)">Excluir</a></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+</div>
+<div class="text-center">
+	<dir-pagination-controls max-size="10" direction-links="true"
+		boundary-links="true" />
+</div>
+
+<script type="text/ng-template" id="modal.html">
+	<div class="modal-header">
+		<h4 class="modal-title" id="modal-title">Confirmacao de exclusao da Usuario</h4>
+	</div>
+	<div class="modal-body" id="modal-body">
+		<div class="row">
+			<div class="col-md-3">
+				<div class="form-group">
+					<label class="form-control-static">Nome da usuario</label>
+				</div>
+			</div>
+
+			<div class="col-md-3">
+				<div class="form-group">
+					<p class="form-control-static">{{vm.notaFiscalSelecionada.id}}</p>
+				</div>
+			</div>
+		</div>
+
+
+		<div class="form-horizontal"></div>
+		<div class="modal-footer"></div>
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-default" ng-click="vm.excluir()">Confirmar</button>
+		<button type="button" class="btn btn-default" ng-click="vm.close()">Fechar</button>
+	</div>
+	</script>

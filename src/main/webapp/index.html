@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+
+<html ng-app="app">
+<head lang="pt-BR">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+
+<link rel="icon" type="image/png" href="resources/img/favicon.jpeg" />
+<link href="/resources/css/bootstrap/bootstrap.min.css" rel="stylesheet"/>
+<link href="/resources/css/jquery-ui/jquery-ui.css" rel="stylesheet"/>
+
+<title>Desafio Contabilizei</title>
+</head>
+<body>
+	<!-- INIT Importação das bibliotecas de configurações -->
+	<script src="resources/js/jquery.min.js"></script>
+	
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.1.0/bootstrap.min.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-animate.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-sanitize.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.4.2/angular-ui-router.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/angular-smart-table/2.1.8/smart-table.min.js"></script>
+	<script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-2.4.0.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-strap/2.3.10/angular-strap.min.js"></script>
+	<script src="https://rawgit.com/dwmkerr/angular-modal-service/master/dst/angular-modal-service.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-input-masks/2.5.0/angular-input-masks-standalone.min.js"></script>
+
+	<script src="resources/js/angular-locale_pt-br.js"></script>
+		
+	<script src="resources/js/angular-br-filters/angular-br-filters.js"></script>
+	<script src="resources/js/angular-br-filters/angular-br-filters.min.js"></script>
+	<script src="resources/js/angular-input-masks-standalone.js"></script>
+	<script src="resources/js/angucomplete.js"></script> 	 
+
+	<script src="resources/js/dirPagination.js"></script>
+	<!-- END Importação das bibliotecas de configurações -->
+
+	<!-- INIT Importação de páginas do sistema -->
+	<script src="resources/app/app.js"></script>
+	<script src="resources/app/url.js"></script>
+	
+	<script src="resources/app/components/message/message-service.js"></script>
+
+	<script src="resources/app/usuario/usuario-service.js"></script>
+	<script src="resources/app/usuario/UsuarioController.js"></script>
+	
+	<script src="resources/app/notafiscal/notafiscal-service.js"></script>
+	<script src="resources/app/notafiscal/NotaFiscalController.js"></script>
+	
+	<script src="resources/app/imposto/imposto-service.js"></script>
+	<script src="resources/app/imposto/ImpostoController.js"></script>
+
+	<!-- END Importação de páginas do sistema -->
+
+	<style type="text/css">
+.inverse-dropdown {
+	background-color: #222;
+	border-color: #080808;
+}
+
+.inverse-dropdown li a {
+	color: #999;
+}
+
+.inverse-dropdown li a:hover {
+	color: #fff;
+	background-color: #000;
+}
+
+.inverse-dropdown.divider {
+	background-color: #000;
+}
+
+html {
+	position: relative;
+	min-height: 100%;
+}
+
+body {
+	/* Margin bottom by footer height */
+	margin-bottom: 60px;
+}
+
+
+body>.container-fluid {
+	padding: 60px 15px 0;
+	margin-bottom: 70px;
+}
+
+.footer>div {
+	margin-top: 10px;
+}
+
+.footer>div>.text-muted {
+	text-align: center;
+}
+
+@media print {
+	.no-print {
+		display: none;
+	}
+}
+</style>
+
+	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+		<div id="navbar" class="collapse navbar-collapse">
+			<ul class="nav navbar-nav">
+			<li><a ui-sref="home">home</a></li>
+			<li><a ui-sref="usuario">Usuario</a></li>
+			<li><a ui-sref="notaFiscal">Nota Fiscal</a></li>
+			<li><a ui-sref="imposto">Imposto</a></li>
+			</ul>
+		</div>
+	</nav>
+	<div class="container-fluid">
+		<div class="row" tabindex="-1" style="border: 0 none transparent">
+			<div class="col-sm-12">
+				<div id="message" class="message">
+					<div id="alerts" uib-alert ng-repeat="alert in alerts"
+						ng-class="'alert-' + (alert.type || 'warning')"
+						close="closeAlert($index)" dismiss-on-timeout="5000">{{alert.msg}}
+					</div>
+				</div>
+			</div>
+		</div>
+		<div ui-view=""></div>
+	</div>
+</body>
+</html>

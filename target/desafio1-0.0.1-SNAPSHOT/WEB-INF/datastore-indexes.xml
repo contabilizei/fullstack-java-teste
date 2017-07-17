@@ -1,0 +1,13 @@
+<?xml	version="1.0"	encoding="utf-8"?>
+<datastore-indexes autoGenerate="true">
+	<datastore-index kind="usuarios" ancestor="false">
+		<property name="razaoSocial" direction="asc" />
+		<property name="regimeTributario" direction="asc" />
+		<property name="email" direction="asc" />
+		<property name="anexos" direction="asc" />
+	</datastore-index>
+	<datastore-index kind="notaFiscalS" ancestor="false">
+		<property name="nmrNotaFiscal" direction="asc" />
+		<property name="descricao" direction="asc" />
+	</datastore-index>
+</datastore-indexes>
